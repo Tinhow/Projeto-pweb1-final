@@ -1,6 +1,6 @@
 # ProjetoPweb
 Projeto feito por mim Walter Filho, para a disciplina de Programação para web1, com intuito de usar as funcionalidade, atributos, componentes, modulos e etc.
-dupla contribuidora Geraldo Neto
+Dupla contribuidora Geraldo Neto
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
