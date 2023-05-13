@@ -1,0 +1,80 @@
+.container {
+  min-height: 100vh;
+}
+
+.a{
+  background-color: white;
+}
+
+
+.a img {
+  max-width: 100%;
+  height: auto;
+}
+
+.b{
+  background-color: #969FFC;
+}
+
+.b {
+  justify-content: center;
+  align-items: center;
+}
+
+.cadastro{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+
+}
+
+
+.bt{
+  display: flex;
+  justify-content: center;
+  min-width: 100%;
+}
+
+.tituloLogin{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.card-insercao-usuario{
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  margin-top: 10px;
+  margin-left: 10px;
+  flex-direction: column;
+  padding: 1.5rem;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.mat-form-simples{
+  width: 100%;
+}
+
+.divLogo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nomeLogo .mat-mdc-card-title{
+  font-size: 3.5rem;
+}
+
+.mat-mdc-card-title{
+  font-size: 2rem;
+}
+
+
+.link{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 20px;
+}

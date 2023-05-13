@@ -1,0 +1,53 @@
+<div class="container" fxLayout="row" fxLayoutAlign="start stretch">
+
+  <div class="a" fxFlex="60%">
+    <img src="../../../assets/img/pessoas-exercitando.png" alt="">
+  </div>
+
+  <div class="b" fxFlex="40%">
+
+    <div class="cadastro" fxFlex="100%">
+
+      <mat-card class="card-insercao-usuario">
+
+        <div class="divLogo">
+          <mat-card-header class="nomeLogo">
+            <mat-card-title>FitTracker</mat-card-title>
+          </mat-card-header>
+        </div>
+
+        <mat-card-header class="tituloLogin">
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+
+        <mat-form-field appearance="fill" class="mat-form-simples">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="digite seu email" [(ngModel)]="usuario.email" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mat-form-simples">
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="usuario.senha"  [formControl]="senha" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="senha.invalid">{{getSenhaErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <div>
+          <a [routerLink]="['/cadastro']" routerLinkActive="router-link-active" >fazer cadastro</a>
+        </div>
+
+        <div class="bt">
+          <mat-card-actions>
+            <button mat-raised-button (click)="logar()" color="primary">Entrar</button>
+          </mat-card-actions>
+        </div>
+
+      </mat-card>
+    </div>
+
+  </div>
+</div>
+

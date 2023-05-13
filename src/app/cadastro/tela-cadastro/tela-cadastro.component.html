@@ -1,0 +1,72 @@
+<div class="container" fxLayout="row" fxLayoutAlign="start stretch">
+
+  <div class="a" fxFlex="60%">
+    <img src="../../../assets/img/correndo.png" alt="Media illustrations by Storyset">
+  </div>
+
+  <div class="b" fxFlex="40%">
+    <div class="cadastro" fxFlex="100%">
+
+      <mat-card class="card-insercao-usuario">
+
+        <div class="divLogo">
+          <mat-card-header class="nomeLogo">
+            <mat-card-title>FitTracker</mat-card-title>
+          </mat-card-header>
+        </div>
+
+        <mat-card-header class="tituloLogin">
+          <mat-card-title>cadastro</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field appearance="fill" class="mat-form-simples" >
+            <mat-label>Nome</mat-label>
+            <input matInput [(ngModel)]="usuario.nome" placeholder="digite seu nome" [formControl]="nome" required>
+            <mat-error *ngIf="nome.invalid">{{getNameErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="mat-form-simples">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="digite seu email" [(ngModel)]="usuario.email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="mat-form-simples">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="usuario.senha"  [formControl]="senha" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="senha.invalid">{{getSenhaErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="mat-form-simples">
+            <mat-label>CPF</mat-label>
+            <input  matInput [(ngModel)]="usuario.cpf" placeholder="digite o cpf" [formControl]="cpf" required>
+            <mat-error *ngIf="cpf.invalid">{{getCPFErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="mat-form-simples">
+            <mat-label>Idade</mat-label>
+            <input  matInput [(ngModel)]="usuario.idade" placeholder= "digite sua idade" [formControl]="idade" required>
+            <mat-error *ngIf="idade.invalid">{{getIdadeErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </mat-card-content>
+
+        <div class="link">
+          <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Fazer Login</a>
+        </div>
+
+        <div class="bt">
+          <mat-card-actions>
+            <button mat-raised-button (click)="cadastrar()" color="primary">{{botaoSalvar}}</button>
+          </mat-card-actions>
+        </div>
+
+      </mat-card>
+    </div>
+
+  </div>
+</div>
+
