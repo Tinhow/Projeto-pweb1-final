@@ -1,0 +1,12 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "João",
+      "email": "joao@gmail.com",
+      "senha": "123456",
+      "cpf": "12345678910",
+      "idade": "30"
+    }
+  ]
+}

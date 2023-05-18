@@ -14,7 +14,6 @@ import { PipesModule } from '../pipes/pipes.module';
   imports: [
     CommonModule,
     ComponentesAngularModule,
-    CadastroModule,
     PipesModule
   ],
   exports: [

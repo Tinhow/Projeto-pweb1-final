@@ -1,8 +1,8 @@
-import { CADASTROLIST } from './../../shared/model/CADASTROLIST';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { USUARIO } from 'src/app/shared/model/USUARIO';
+import { Usuario } from 'src/app/shared/model/Usuario';
+import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
 @Component({
   selector: 'app-tela-login',
@@ -11,36 +11,38 @@ import { USUARIO } from 'src/app/shared/model/USUARIO';
 })
 export class TelaLoginComponent {
 
-  usuario: USUARIO;
-  usuarios = CADASTROLIST;
+  usuario: Usuario = new Usuario();
   email = new FormControl();
   senha = new FormControl();
 
   hide = true;
 
-
-  constructor(private rotaAtual: ActivatedRoute, private roteador: Router){
-    this.usuario = new USUARIO()
-
-  }
+  constructor(
+    private rotaAtual: ActivatedRoute,
+    private roteador: Router,
+    private usuarioService: UsuarioService
+  ) {}
 
   logar(): void {
-    const usuarioEncontrado = this.usuarios.find(usuario => usuario.email === this.usuario.email && usuario.senha === this.usuario.senha);
-    if (usuarioEncontrado) {
-      console.log(usuarioEncontrado);
-      this.roteador.navigate(['homePage']);
-    } else {
-      alert('Usuário não encontrado');
-    }
+    this.usuarioService.logar(this.usuario).subscribe(
+      usuarioLogado => {
+        // O usuário foi autenticado com sucesso
+        console.log(usuarioLogado);
+        this.roteador.navigate(['homePage']);
+      },
+      error => {
+        // Ocorreu um erro ao autenticar o usuário
+        console.log(error);
+        alert('Usuário não encontrado');
+      }
+    );
   }
 
   getEmailErrorMessage() {
-    return 'por favor, forneça um Email válido';
+    return 'Por favor, forneça um email válido';
   }
 
   getSenhaErrorMessage() {
-    return 'por favor, forneça uma Senha válida';
+    return 'Por favor, forneça uma senha válida';
   }
-
-
 }

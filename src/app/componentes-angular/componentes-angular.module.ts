@@ -11,6 +11,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterLink } from '@angular/router';
 import {MatError, MatFormFieldModule} from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -28,7 +29,8 @@ import {MatError, MatFormFieldModule} from '@angular/material/form-field';
     AppRoutingModule,
     FormsModule,
     FlexLayoutModule,
-    RouterLink
+    RouterLink,
+    HttpClientModule
   ],
   exports: [
     CommonModule,
@@ -44,7 +46,8 @@ import {MatError, MatFormFieldModule} from '@angular/material/form-field';
     FormsModule,
     FlexLayoutModule,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
 
   ]
 })

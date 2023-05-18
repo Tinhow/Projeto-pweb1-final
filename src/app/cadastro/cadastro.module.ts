@@ -4,8 +4,6 @@ import { TelaCadastroComponent } from './tela-cadastro/tela-cadastro.component';
 import { ComponentesAngularModule } from '../componentes-angular/componentes-angular.module';
 import { PipesModule } from '../pipes/pipes.module';
 
-
-
 @NgModule({
   declarations: [
     TelaLoginComponent,

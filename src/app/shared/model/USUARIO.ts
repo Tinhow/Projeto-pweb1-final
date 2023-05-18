@@ -1,6 +1,7 @@
-export class USUARIO{
+export class Usuario{
 
-  constructor(public nome: string = '',
+  constructor(public id: number = 0,
+              public nome: string = '',
               public email: string = '',
               public senha: string = '',
               public cpf: string = '',

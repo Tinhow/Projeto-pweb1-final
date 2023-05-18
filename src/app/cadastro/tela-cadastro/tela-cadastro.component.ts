@@ -1,8 +1,8 @@
-import { CADASTROLIST } from './../../shared/model/CADASTROLIST';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { USUARIO } from 'src/app/shared/model/USUARIO';
+import { Usuario } from 'src/app/shared/model/Usuario';
+import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
 @Component({
   selector: 'app-tela-cadastro',
@@ -10,12 +10,10 @@ import { USUARIO } from 'src/app/shared/model/USUARIO';
   styleUrls: ['./tela-cadastro.component.scss']
 })
 export class TelaCadastroComponent {
-
-  usuario: USUARIO
-  usuarios = CADASTROLIST;
+  usuario: Usuario;
   estahCadastrando = true;
   botaoSalvar = 'Cadastrar';
-  
+
   nome = new FormControl();
   email = new FormControl();
   senha = new FormControl();
@@ -24,67 +22,62 @@ export class TelaCadastroComponent {
 
   hide = true;
 
-  constructor(private rotaAtual: ActivatedRoute, private roteador: Router) {
-    this.usuario = new USUARIO();
+  constructor(
+    private rotaAtual: ActivatedRoute,
+    private roteador: Router,
+    private usuarioService: UsuarioService
+  ) {
+    this.usuario = new Usuario();
     const idParaEdicao = this.rotaAtual.snapshot.paramMap.get('id');
     if (idParaEdicao) {
-      // editando
-      const usuarioEncontrado = this.usuarios.find(
-        usuario => usuario.cpf === idParaEdicao);
-      if (usuarioEncontrado) {
-        this.estahCadastrando = false;
-        this.botaoSalvar = 'Salvar';
-        this.usuario = usuarioEncontrado;
-      }
-    } else {
-      this.botaoSalvar = 'Cadastrar';
-    }
 
+      this.estahCadastrando = false;
+      this.botaoSalvar = 'Salvar';
+      this.usuarioService.bucarId(Number(idParaEdicao)).subscribe(
+        usuario => this.usuario = usuario);
+        (error: any) => {
+          console.error(error);
+        }
+    }
   }
 
   cadastrar(): void {
-    if (this.usuario && this.usuario.cpf) { // Verifica se o CPF foi fornecido
-      const index = this.usuarios.findIndex(u => u.cpf === this.usuario.cpf);
-      if (index >= 0) {
-        // Atualizando usuário existente
-        this.usuarios[index] = this.usuario;
-      } else {
-        // Adicionando novo usuário
-        this.usuarios.push(this.usuario);
-      }
-      this.usuario = new USUARIO();
-      this.botaoSalvar = 'Cadastrar';
-      this.roteador.navigate(['homePage']);
-    } else {
-      alert('Por favor, forneça um CPF válido.');
+    if(this.botaoSalvar === 'Salvar'){
+      this.usuarioService.editar(this.usuario).subscribe();
+      console.log(this.usuario);
+      this.roteador.navigate(['/homePage']);
     }
+
+    this.usuarioService.cadastrar(this.usuario).subscribe({
+      next: (usuarioCadastrado: Usuario) => {
+        console.log(usuarioCadastrado);
+        this.roteador.navigate(['/homePage']);
+        this.usuario = new Usuario();
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
   }
 
 
-  getNameErrorMessage() {
+  getNameErrorMessage(): string {
     return 'Por favor, forneça seu nome.';
   }
-  getEmailErrorMessage() {
+
+  getEmailErrorMessage(): string {
     return 'Por favor, forneça um email válido.';
   }
-  getSenhaErrorMessage() {
+
+  getSenhaErrorMessage(): string {
     return 'Por favor, forneça uma senha válida.';
   }
-  getCPFErrorMessage() {
+
+  getCPFErrorMessage(): string {
     return 'Por favor, forneça um CPF válido.';
   }
-  getIdadeErrorMessage() {
+
+  getIdadeErrorMessage(): string {
     return 'Por favor, forneça uma idade válida.';
   }
-
-
 }
-
-
-
-
-
-
-
-
-
