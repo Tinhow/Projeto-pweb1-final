@@ -1,5 +1,6 @@
 .container {
-  min-height: 100vh;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .a{
@@ -24,8 +25,7 @@
 .login{
   display: flex;
   justify-content: center;
-  height: 100vh;
-
+  height: 100%;
 }
 
 
@@ -34,7 +34,8 @@
   justify-content: center;
   min-width: 100%;
   position: relative;
-  bottom: 80px;
+  bottom: 3rem;
+
 }
 
 .bt button{
@@ -50,10 +51,7 @@
 
 .tituloLogin{
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
-  position: relative;
-  bottom: 90px;
+  justify-content: center;
 }
 
 .card-login-usuario{
@@ -68,8 +66,6 @@
 
 .mat-form-simples{
   width: 100%;
-  position: relative;
-  bottom: 70px;
 }
 
 .divLogo{
@@ -77,7 +73,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  bottom: 100px;
+  bottom: 4.2rem;
 }
 
 .nomeLogo .mat-mdc-card-title{
@@ -89,21 +85,25 @@
 }
 
 .imgUser {
-  display: flex;
-  width: 150px;
-  height: 150px;
+  width: 9rem;
   border: 2px solid black;
   border-radius: 50%;
   object-fit: cover;
-  margin-left: 30%;
-  position: relative;
-  bottom: 80px;
+}
+
+.imgContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link{
-  position: relative;
-  bottom: 100px;
+  display: flex;
   margin-left: 10px;
+  position: relative;
+  bottom: 1.5rem;
+
 }
 
 a{
@@ -113,4 +113,45 @@ a{
 
 a:hover{
   color: white;
+}
+
+//tela com tamanho maximo de  1280px
+@media (max-width: 1300px) {
+  .imgUser {
+    width: 9rem;
+  }
+  .a img{
+    height: 100%;
+  }
+
+  .divLogo{
+    bottom: 2rem;
+  }
+  .nomeLogo .mat-mdc-card-title{
+    font-size: 2.5rem;
+  }
+  .a{
+    height: 100vh;
+  }
+  .container{
+    height: 100vh;
+  }
+}
+
+//tela com tamanho maximo de  1360px
+@media (min-width: 1360px) {
+  .imgUser {
+    width: 7rem;
+  }
+  .a img{
+    height: 100%;
+  }
+
+  .divLogo{
+    bottom: .5rem;
+  }
+  .nomeLogo .mat-mdc-card-title{
+    font-size: 2.5rem;
+  }
+
 }

@@ -1,5 +1,6 @@
 .container {
-  min-height: 100vh;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .a{
@@ -11,6 +12,7 @@
   max-width: 100%;
   height: auto;
 }
+
 
 .b{
   background-color: #969FFC;
@@ -24,17 +26,16 @@
 .cadastro{
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 
 }
-
 
 .bt{
   display: flex;
   justify-content: center;
   min-width: 100%;
   position: relative;
-  bottom: 70px;
+  bottom: 2rem;
 }
 
 .bt button{
@@ -50,9 +51,9 @@
 
 .tituloCadastro{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   position: relative;
-  bottom: 50px;
+  bottom: 20px;
 }
 
 .card-insercao-usuario{
@@ -62,13 +63,11 @@
   flex-direction: column;
   padding: 1.5rem;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .mat-form-simples{
   width: 100%;
-  position: relative;
-  bottom: 25px;
 }
 
 .divLogo{
@@ -76,7 +75,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  bottom: 50px;
+  bottom: 4.5rem;
 }
 
 .nomeLogo .mat-mdc-card-title{
@@ -90,8 +89,8 @@
 
 .link{
   position: relative;
-  bottom: 60px;
   margin-left: 18px;
+  bottom: 1.5rem;
 }
 
 
@@ -102,4 +101,43 @@ a{
 
 a:hover{
   color: white;
+}
+
+//tela com tamanho maximo de  1280px
+@media (max-width: 1300px) {
+  .imgUser {
+    width: 9rem;
+  }
+  .a img{
+    height: 100%;
+  }
+
+  .divLogo{
+    bottom: 2rem;
+  }
+  .nomeLogo .mat-mdc-card-title{
+    font-size: 2.5rem;
+  }
+  .a{
+    height: 100vh;
+  }
+  .container{
+    height: 100vh;
+  }
+}
+
+//tela com tamanho maximo de  1360px
+@media (min-width: 1360px) {
+
+  .a img{
+    height: 100%;
+  }
+
+  .divLogo{
+    bottom: .1rem;
+  }
+  .nomeLogo .mat-mdc-card-title{
+    font-size: 2.5rem;
+  }
+
 }
