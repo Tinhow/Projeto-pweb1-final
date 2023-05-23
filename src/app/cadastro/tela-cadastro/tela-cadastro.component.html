@@ -33,15 +33,6 @@
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="mat-form-simples">
-            <mat-label>Senha</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="usuario.senha"  [formControl]="senha" required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            <mat-error *ngIf="senha.invalid">{{getSenhaErrorMessage()}}</mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" class="mat-form-simples">
             <mat-label>CPF</mat-label>
             <input  matInput [(ngModel)]="usuario.cpf" placeholder="digite o cpf" [formControl]="cpf" required>
             <mat-error *ngIf="cpf.invalid">{{getCPFErrorMessage()}}</mat-error>
@@ -52,6 +43,16 @@
             <input  matInput [(ngModel)]="usuario.idade" placeholder= "digite sua idade" [formControl]="idade" required>
             <mat-error *ngIf="idade.invalid">{{getIdadeErrorMessage()}}</mat-error>
           </mat-form-field>
+
+          <mat-form-field appearance="fill" class="mat-form-simples">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="usuario.senha"  [formControl]="senha" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="senha.invalid">{{getSenhaErrorMessage()}}</mat-error>
+          </mat-form-field>
+
         </mat-card-content>
 
         <div class="link">
