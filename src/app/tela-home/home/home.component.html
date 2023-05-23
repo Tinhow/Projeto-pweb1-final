@@ -1,21 +1,16 @@
-<p>home works!</p>
+<div class="body">
 
-<div fxLayout="row wrap"  fxLayout.lt-sm="column">
-  <mat-card *ngFor="let usuario of usuarios" class="mat-card-simples">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon>person</mat-icon>
-        {{usuario.nome}}</mat-card-title>
-      <mat-card-subtitle class="sub" *ngIf="usuario.cpf.length">CPF: {{usuario.cpf | cpf}}  Idade: {{usuario.idade}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Email: {{usuario.email}}</p>
+  <div class="menu" fxLayout="row-reverse">
+    <button mat-button [matMenuTriggerFor]="aboveMenu">Menu</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+      <button mat-menu-item>Listagem Usuarios</button>
+      <button mat-menu-item>Sobre Nós</button>
+    </mat-menu>
+  </div>
 
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="primary" [routerLink]="['/editarUsuario', usuario.id]"> Editar</button>
-      <button mat-button color="warn" (click)="excluir(usuario)">Excluir</button>
-    </mat-card-actions>
-  </mat-card>
+  <div>
+    
+  </div>
+
 
 </div>

@@ -33,20 +33,32 @@
   display: flex;
   justify-content: center;
   min-width: 100%;
+  position: relative;
+  bottom: 70px;
 }
 
-.tituloLogin{
+.bt button{
+  background-color: #000 ;
+  width: 100px;
+  height: 40px;
+}
+
+.bt button:hover{
+  background-color: white;
+  color: #000;
+}
+
+.tituloCadastro{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 10px;
+  position: relative;
+  bottom: 50px;
 }
 
 .card-insercao-usuario{
   display: flex;
   width: 100%;
   background-color: transparent;
-  margin-top: 10px;
-  margin-left: 10px;
   flex-direction: column;
   padding: 1.5rem;
   justify-content: center;
@@ -55,12 +67,16 @@
 
 .mat-form-simples{
   width: 100%;
+  position: relative;
+  bottom: 25px;
 }
 
 .divLogo{
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  bottom: 50px;
 }
 
 .nomeLogo .mat-mdc-card-title{
@@ -73,8 +89,17 @@
 
 
 .link{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: 20px;
+  position: relative;
+  bottom: 60px;
+  margin-left: 18px;
+}
+
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  color: white;
 }

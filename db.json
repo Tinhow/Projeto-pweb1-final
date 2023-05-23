@@ -7,6 +7,14 @@
       "senha": "123456",
       "cpf": "12345678910",
       "idade": "30"
+    },
+    {
+      "id": 2,
+      "nome": "walter Filho",
+      "email": "Walter@",
+      "senha": "123456",
+      "cpf": "12343532333",
+      "idade": "22"
     }
   ]
 }
