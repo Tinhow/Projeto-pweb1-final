@@ -31,13 +31,6 @@
       "nameTag": "pedal massa",
       "distancia": "3,4",
       "tempo": "2"
-    },
-    {
-      "id": 3,
-      "atividade": "caminhada",
-      "nameTag": "pedal",
-      "distancia": "2",
-      "tempo": "3"
     }
   ]
 }

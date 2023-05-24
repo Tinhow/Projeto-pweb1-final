@@ -16,12 +16,12 @@ export class ListagemTesteComponent implements OnInit {
   constructor(private usuarioService: UsuarioService,  private router: Router, private rotaAtual: ActivatedRoute) {
     this.usuario = new Usuario();
   }
-
+//problema está aqui?
   ngOnInit(): void {
     this.usuarioService.listar().subscribe(
       (usuarios: Usuario[]) => {
         this.usuarios = usuarios;
-      }
+       }  
     );
   }
 

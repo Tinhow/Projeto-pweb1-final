@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Atividade } from 'src/app/shared/model/Atividade';
 import { AtividadeService } from 'src/app/shared/services/atividade.service';
-import { MatDialogModule ,MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+// import { EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
+  // @Output() atividadeAdicionada: EventEmitter<void> = new EventEmitter<void>
   atividade: Atividade;
   atividades: Array<Atividade> = [];
   botaoAdd = "Adicionar";
+  nwatividade = new Atividade();
   // nameTag = new FormControl();
   // atv = new FormControl();
   // distancia = new FormControl();
@@ -34,13 +35,22 @@ export class ModalComponent implements OnInit {
     this.dialoRef.close();
   }
   cadastrar(): void {
-    if(this.botaoAdd === "Adicionar"){
-      this.atividadeService.cadastrar(this.atividade).subscribe();
-      console.log(this.atividade);
+    if (this.botaoAdd === "Adicionar") {
+      this.atividadeService.cadastrar(this.atividade).subscribe(
+        response => {
+          // this.atividadeAdicionada.emit();
+          this.atividades.push(this.atividade);
+          this.atividade = new Atividade();
+          this.dialoRef.close();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
+  }
+}
+      
+
   
-      error: (error: any) => {
-        console.error(error);
-      }
-    };
-  }}
 

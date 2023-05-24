@@ -14,9 +14,10 @@ export class HomeComponent {
 
   atividade: Atividade;
   atividades: Array<Atividade> = [];
+  estahAdc = false;
 
 
-  constructor(public dialog: MatDialog, private atividadeService: AtividadeService,  private router: Router, private rotaAtual: ActivatedRoute) {
+  constructor(public dialogRef: MatDialog, private atividadeService: AtividadeService,  private router: Router, private rotaAtual: ActivatedRoute) {
     this.atividade = new Atividade();
   }
 
@@ -25,10 +26,14 @@ export class HomeComponent {
       (atividades: Atividade[]) => {
         this.atividades = atividades;
       }
-    );
+    
+      );
   }
   openDialog() {
-    this.dialog.open(ModalComponent);
+    const dialogRef = this.dialogRef.open(ModalComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.listar();
+    })
   }
 
   listar(): void {
@@ -51,4 +56,18 @@ export class HomeComponent {
       }
     );
   }
+  editar(atvPeditar: Atividade): void {
+    if (this.atividade && !this.estahAdc) {
+      this.atividadeService.editar(atvPeditar).subscribe(
+        () => {
+          console.log("Usuário atualizado");
+          // this.openDialog(atvPeditar)
+        }
+      )
+    }
+  }
+  
 }
+
+
+
