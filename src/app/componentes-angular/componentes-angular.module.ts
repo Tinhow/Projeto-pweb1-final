@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterLink } from '@angular/router';
 import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     FlexLayoutModule,
     RouterLink,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   exports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { HttpClientModule } from '@angular/common/http';
     FlexLayoutModule,
     RouterLink,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
 
   ]
 })

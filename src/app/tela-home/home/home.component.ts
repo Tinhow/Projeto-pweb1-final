@@ -1,42 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/shared/model/Usuario';
-import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Atividade } from 'src/app/shared/model/Atividade';
+import { AtividadeService } from 'src/app/shared/services/atividade.service';
+import {MatDialog} from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
 
-  usuarios: Array<Usuario> = [];
-  usuario: Usuario;
+  atividade: Atividade;
+  atividades: Array<Atividade> = [];
 
-  constructor(private usuarioService: UsuarioService,  private router: Router, private rotaAtual: ActivatedRoute) {
-    this.usuario = new Usuario();
+
+  constructor(public dialog: MatDialog, private atividadeService: AtividadeService,  private router: Router, private rotaAtual: ActivatedRoute) {
+    this.atividade = new Atividade();
   }
 
   ngOnInit(): void {
-    this.usuarioService.listar().subscribe(
-      (usuarios: Usuario[]) => {
-        this.usuarios = usuarios;
+    this.atividadeService.listar().subscribe(
+      (atividades: Atividade[]) => {
+        this.atividades = atividades;
       }
     );
   }
+  openDialog() {
+    this.dialog.open(ModalComponent);
+  }
 
   listar(): void {
-    this.usuarioService.listar().subscribe({
-      next: (usuarios: Usuario[]) => {
-        this.usuarios = usuarios;
+    this.atividadeService.listar().subscribe({
+      next: (atividades: Atividade[] ) => {
+        this.atividades = atividades;
       },
       error: error => console.error(error)
     });
   }
 
-  excluir(usuarioARemover: Usuario): void {
-    this.usuarioService.excluir(usuarioARemover).subscribe(
+  excluir(atvARemover: Atividade): void {
+    this.atividadeService.excluir(atvARemover).subscribe(
       () => {
         console.log('Usuário excluído com sucesso');
         this.listar(); // Atualiza a lista de usuários após a exclusão

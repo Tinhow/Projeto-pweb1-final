@@ -15,7 +15,6 @@ import { TelaHomeModule } from './tela-home/tela-home.module';
     ComponentesAngularModule,
     CadastroModule,
     TelaHomeModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
