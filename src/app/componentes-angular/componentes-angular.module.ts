@@ -34,7 +34,7 @@ import { MatMenuModule } from '@angular/material/menu';
     FlexLayoutModule,
     RouterLink,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
     PipesModule,
     MatMenuModule
   ],
