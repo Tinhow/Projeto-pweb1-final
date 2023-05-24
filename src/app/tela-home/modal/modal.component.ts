@@ -37,7 +37,8 @@ export class ModalComponent implements OnInit {
     if(this.botaoAdd === "Adicionar"){
       this.atividadeService.cadastrar(this.atividade).subscribe();
       console.log(this.atividade);
-  
+      this.cancel();
+      window.location.reload();
       error: (error: any) => {
         console.error(error);
       }
