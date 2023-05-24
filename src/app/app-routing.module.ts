@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path:'listagemUsers',
     component: ListagemTesteComponent
+  },
+  {
+    path:'editarTreino/:id',
+    component: HomeComponent
   }
 
 

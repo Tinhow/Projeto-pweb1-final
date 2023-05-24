@@ -38,6 +38,13 @@
       "nameTag": "pedal",
       "distancia": "2",
       "tempo": "3"
+    },
+    {
+      "id": 4,
+      "atividade": "musculação",
+      "nameTag": "treino",
+      "distancia": "0",
+      "tempo": "1"
     }
   ]
 }

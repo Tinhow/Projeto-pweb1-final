@@ -12,9 +12,8 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class HomeComponent {
 
-  atividade: Atividade;
   atividades: Array<Atividade> = [];
-
+  atividade: Atividade;
 
   constructor(public dialog: MatDialog, private atividadeService: AtividadeService,  private router: Router, private rotaAtual: ActivatedRoute) {
     this.atividade = new Atividade();

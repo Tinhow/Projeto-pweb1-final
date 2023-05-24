@@ -2,9 +2,9 @@
   <div id="logo" >
     <img src="../../../assets/img/logo.svg" alt="">
   </div>
-  
+
   <h1 class="titulo">Minhas Atividades</h1>
-  
+
   <button id="addbtn" mat-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
   <div fxLayout="row wrap"  fxLayout.lt-sm="column">
     <mat-card  *ngFor="let atividade of atividades" class="mat-card-simples">
@@ -20,7 +20,7 @@
         Atividade: {{atividade.atividade}}
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button color="black" [routerLink]="['/editaratividade', atividade.id]"><mat-icon>create</mat-icon></button>
+        <button mat-button color="black" [routerLink]="['/editarTreino', atividade.id]"><mat-icon>create</mat-icon></button>
         <button mat-button color="warn" (click)="excluir(atividade)"><mat-icon>delete</mat-icon></button>
       </mat-card-actions>
     </mat-card>
