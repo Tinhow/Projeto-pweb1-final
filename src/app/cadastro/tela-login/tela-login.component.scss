@@ -1,5 +1,6 @@
 .container {
-  min-height: 100vh;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .a{
@@ -21,11 +22,10 @@
   align-items: center;
 }
 
-.cadastro{
+.login{
   display: flex;
   justify-content: center;
-  height: 100vh;
-
+  height: 100%;
 }
 
 
@@ -33,20 +33,31 @@
   display: flex;
   justify-content: center;
   min-width: 100%;
+  position: relative;
+  bottom: 3rem;
+
+}
+
+.bt button{
+  background-color: #000 ;
+  width: 100px;
+  height: 40px;
+}
+
+.bt button:hover{
+  background-color: white;
+  color: #000;
 }
 
 .tituloLogin{
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
+  justify-content: center;
 }
 
-.card-insercao-usuario{
+.card-login-usuario{
   display: flex;
   width: 100%;
   background-color: transparent;
-  margin-top: 10px;
-  margin-left: 10px;
   flex-direction: column;
   padding: 1.5rem;
   justify-content: center;
@@ -61,6 +72,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  bottom: 4.2rem;
 }
 
 .nomeLogo .mat-mdc-card-title{
@@ -69,4 +82,76 @@
 
 .mat-mdc-card-title{
   font-size: 2rem;
+}
+
+.imgUser {
+  width: 9rem;
+  border: 2px solid black;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.imgContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link{
+  display: flex;
+  margin-left: 10px;
+  position: relative;
+  bottom: 1.5rem;
+
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  color: white;
+}
+
+//tela com tamanho maximo de  1280px
+@media (max-width: 1300px) {
+  .imgUser {
+    width: 9rem;
+  }
+  .a img{
+    height: 100%;
+  }
+
+  .divLogo{
+    bottom: 2rem;
+  }
+  .nomeLogo .mat-mdc-card-title{
+    font-size: 2.5rem;
+  }
+  .a{
+    height: 100vh;
+  }
+  .container{
+    height: 100vh;
+  }
+}
+
+//tela com tamanho maximo de  1360px
+@media (min-width: 1360px) {
+  .imgUser {
+    width: 7rem;
+  }
+  .a img{
+    height: 100%;
+  }
+
+  .divLogo{
+    bottom: .5rem;
+  }
+  .nomeLogo .mat-mdc-card-title{
+    font-size: 2.5rem;
+  }
+
 }

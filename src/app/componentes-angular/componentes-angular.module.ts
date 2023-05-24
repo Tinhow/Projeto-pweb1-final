@@ -9,15 +9,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { pipe } from 'rxjs';
+import { PipesModule } from '../pipes/pipes.module';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     CommonModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -33,6 +35,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     RouterLink,
     HttpClientModule,
     MatDialogModule
+    PipesModule,
+    MatMenuModule
   ],
   exports: [
     CommonModule,
@@ -50,8 +54,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     RouterLink,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
-
+    MatDialogModule,
+    PipesModule,
+    MatMenuModule
   ]
 })
 export class ComponentesAngularModule { }

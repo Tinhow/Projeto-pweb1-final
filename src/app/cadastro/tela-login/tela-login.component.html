@@ -1,19 +1,23 @@
 <div class="container" fxLayout="row" fxLayoutAlign="start stretch">
 
   <div class="a" fxFlex="60%">
-    <img src="../../../assets/img/pessoas-exercitando.png" alt="">
+    <img src="../../../assets/img/pessoas-exercitando.png" alt="Data illustrations by Storyset">
   </div>
 
   <div class="b" fxFlex="40%">
 
-    <div class="cadastro" fxFlex="100%">
+    <div class="login" fxFlex="100%">
 
-      <mat-card class="card-insercao-usuario">
+      <mat-card class="card-login-usuario">
 
         <div class="divLogo">
           <mat-card-header class="nomeLogo">
             <mat-card-title>FitTracker</mat-card-title>
           </mat-card-header>
+        </div>
+
+        <div class="imgContainer" >
+          <img class="imgUser" src="../../../assets/img/user.png" alt="Data illustrations by Storyset">
         </div>
 
         <mat-card-header class="tituloLogin">
@@ -35,8 +39,8 @@
           <mat-error *ngIf="senha.invalid">{{getSenhaErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <div>
-          <a [routerLink]="['/cadastro']">fazer cadastro</a>
+        <div class="link">
+          <a [routerLink]="['/cadastro']">Cadastrar-se?</a>
         </div>
 
         <div class="bt">
