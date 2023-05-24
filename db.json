@@ -16,5 +16,28 @@
       "cpf": "12343532333",
       "idade": "22"
     }
+  ],
+  "atividades": [
+    {
+      "id": 1,
+      "atividade": "Natação",
+      "nameTag": "nado no açude velho",
+      "distancia": "3,4",
+      "tempo": "4:30"
+    },
+    {
+      "id": 2,
+      "atividade": "caminhada",
+      "nameTag": "pedal massa",
+      "distancia": "3,4",
+      "tempo": "2"
+    },
+    {
+      "id": 3,
+      "atividade": "caminhada",
+      "nameTag": "pedal",
+      "distancia": "2",
+      "tempo": "3"
+    }
   ]
 }

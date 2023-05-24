@@ -12,10 +12,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterLink, RouterModule } from '@angular/router';
 import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 import { pipe } from 'rxjs';
 import { PipesModule } from '../pipes/pipes.module';
 import { MatMenuModule } from '@angular/material/menu';
-
 
 @NgModule({
   declarations: [],
@@ -34,6 +34,7 @@ import { MatMenuModule } from '@angular/material/menu';
     FlexLayoutModule,
     RouterLink,
     HttpClientModule,
+    MatDialogModule
     PipesModule,
     MatMenuModule
   ],
@@ -53,6 +54,7 @@ import { MatMenuModule } from '@angular/material/menu';
     RouterLink,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule,
     PipesModule,
     MatMenuModule
   ]

@@ -15,7 +15,6 @@ import { ListagemUsersModule } from './listagem-users/listagem-users.module';
     CadastroModule,
     TelaHomeModule,
     ListagemUsersModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
