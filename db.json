@@ -59,13 +59,6 @@
   ],
   "atividades": [
     {
-      "id": 1,
-      "atividade": "Natação",
-      "nameTag": "nado no açude velho",
-      "distancia": "3,4",
-      "tempo": "4:30"
-    },
-    {
       "id": 3,
       "atividade": "caminhada",
       "nameTag": "pedal",
