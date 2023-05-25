@@ -27,10 +27,10 @@
     },
     {
       "id": 2,
-      "atividade": "caminhada",
+      "atividade": "biking ",
       "nameTag": "pedal massa",
-      "distancia": "3,4",
-      "tempo": "2"
+      "distancia": "2",
+      "tempo": "4"
     }
   ]
 }

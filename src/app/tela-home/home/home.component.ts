@@ -15,9 +15,11 @@ export class HomeComponent {
   atividade: Atividade;
   atividades: Array<Atividade> = [];
   estahAdc = false;
+  atividadeEd: Atividade;
 
 
   constructor(public dialogRef: MatDialog, private atividadeService: AtividadeService,  private router: Router, private rotaAtual: ActivatedRoute) {
+    this.atividadeEd = new Atividade();
     this.atividade = new Atividade();
   }
 
@@ -31,6 +33,7 @@ export class HomeComponent {
   }
   openDialog() {
     const dialogRef = this.dialogRef.open(ModalComponent);
+    
     dialogRef.afterClosed().subscribe(() => {
       this.listar();
     })
@@ -57,16 +60,9 @@ export class HomeComponent {
     );
   }
   editar(atvPeditar: Atividade): void {
-    if (this.atividade && !this.estahAdc) {
-      this.atividadeService.editar(atvPeditar).subscribe(
-        () => {
-          console.log("Usuário atualizado");
-          // this.openDialog(atvPeditar)
-        }
-      )
-    }
+    this.atividadeEd = atvPeditar;
+    this.openDialog();
   }
-  
 }
 
 
