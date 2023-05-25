@@ -33,12 +33,11 @@ export class ModalComponent implements OnInit {
   cancel(): void{
     this.dialoRef.close();
   }
-  cadastrar(): void {
+  cadastrar(): Atividade | void {
     if(this.botaoAdd === "Adicionar"){
       this.atividadeService.cadastrar(this.atividade).subscribe();
-      console.log(this.atividade);
       this.cancel();
-      window.location.reload();
+      return this.atividade;
       error: (error: any) => {
         console.error(error);
       }

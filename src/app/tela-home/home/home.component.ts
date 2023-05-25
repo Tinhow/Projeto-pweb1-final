@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Atividade } from 'src/app/shared/model/Atividade';
 import { AtividadeService } from 'src/app/shared/services/atividade.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -26,8 +26,14 @@ export class HomeComponent {
       }
     );
   }
+
   openDialog() {
-    this.dialog.open(ModalComponent);
+    const dialog = this.dialog.open(ModalComponent).afterClosed().subscribe((response) =>
+    {
+    console.log(response);
+    this.listar();
+    }
+   )
   }
 
   listar(): void {
