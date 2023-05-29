@@ -15,6 +15,7 @@ export class ModalComponent implements OnInit {
   atividade: Atividade;
   atividades: Array<Atividade> = [];
   botaoAdd = "Adicionar";
+  tituloDialog = "Adicionar nova atividade"
 
   constructor(private atividadeService: AtividadeService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
     this.atividade = new Atividade();
@@ -24,6 +25,7 @@ export class ModalComponent implements OnInit {
     if (this.data && this.data.isEdicao && this.data.atividade) {
       this.atividade = { ...this.data.atividade }; // Copia os dados da atividade recebida para o atributo 'atividade'
       this.botaoAdd = 'Alterar'; // Atualiza o valor para 'Alterar' se for uma ação de edição
+      this.tituloDialog = "Editar atividade"
     } else {
       this.atividade = new Atividade(); // Cria um novo objeto 'Atividade' caso seja uma ação de criação
       this.botaoAdd = 'Adicionar'; // Mantém o valor como 'Adicionar' se for uma ação de criação

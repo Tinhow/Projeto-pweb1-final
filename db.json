@@ -78,13 +78,6 @@
       "nameTag": "corrida",
       "distancia": "2",
       "tempo": "1"
-    },
-    {
-      "id": 8,
-      "atividade": "a",
-      "nameTag": "a",
-      "distancia": "",
-      "tempo": ""
     }
   ]
 }
