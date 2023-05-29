@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from './../../shared/services/usuario.service';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Atividade } from 'src/app/shared/model/Atividade';
 import { AtividadeService } from 'src/app/shared/services/atividade.service';
-import { MatDialogModule ,MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-modal',
@@ -13,34 +15,46 @@ export class ModalComponent implements OnInit {
   atividade: Atividade;
   atividades: Array<Atividade> = [];
   botaoAdd = "Adicionar";
-  // nameTag = new FormControl();
-  // atv = new FormControl();
-  // distancia = new FormControl();
-  // tempo = new FormControl();
 
-  constructor(public dialoRef: MatDialogRef<ModalComponent>,private atividadeService: AtividadeService, public dialog: MatDialog) {
+  constructor(private atividadeService: AtividadeService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
     this.atividade = new Atividade();
   }
-  ngOnInit(): void {
-    //   this.fm = this.fb.group({
-    //   nameTag: ['', [Validators.required]],
-    //   atividade: ['', [Validators.required]],
-    //   distancia: ['', [Validators.required]],
-    //   tempo: ['', [Validators.required]],
 
-    // })
+  ngOnInit() {
+    if (this.data && this.data.isEdicao && this.data.atividade) {
+      this.atividade = { ...this.data.atividade }; // Copia os dados da atividade recebida para o atributo 'atividade'
+      this.botaoAdd = 'Alterar'; // Atualiza o valor para 'Alterar' se for uma ação de edição
+    } else {
+      this.atividade = new Atividade(); // Cria um novo objeto 'Atividade' caso seja uma ação de criação
+      this.botaoAdd = 'Adicionar'; // Mantém o valor como 'Adicionar' se for uma ação de criação
+    }
   }
+
   cancel(): void{
-    this.dialoRef.close();
+    this.dialogRef.close();
   }
-  cadastrar(): Atividade | void {
-    if(this.botaoAdd === "Adicionar"){
-      this.atividadeService.cadastrar(this.atividade).subscribe();
-      this.cancel();
-      return this.atividade;
-      error: (error: any) => {
-        console.error(error);
-      }
-    };
-  }}
+
+  cadastrar(): void {
+    if (this.botaoAdd === 'Adicionar') {
+      this.atividadeService.cadastrar(this.atividade).subscribe({
+        next: () => {
+          this.cancel();
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+    } else {
+      this.atividadeService.editar(this.atividade).subscribe({
+        next: () => {
+          this.cancel();
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+    }
+  }
+
+}
 

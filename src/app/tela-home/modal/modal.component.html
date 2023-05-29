@@ -2,29 +2,25 @@
 
 <div  fxLayout="column" mat-dialog-content>
   <mat-form-field appearance="fill" class="mat-form-simples" submit="cadastrar()">
-    <mat-label>nome de atividade</mat-label>  
+    <mat-label>nome de atividade</mat-label>
     <input matInput [(ngModel)]="atividade.nameTag" placeholder="apelido para atividade" required>
-    <!-- <mat-error *ngIf="nome.invalid">{{getNameErrorMessage()}}</mat-error> -->
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="mat-form-simples">
     <mat-label>Tipo de atividade</mat-label>
     <input matInput placeholder="tipo de atividade" [(ngModel)]="atividade.atividade"  required>
-    <!-- <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error> -->
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="mat-form-simples">
     <mat-label>Distância percorrida</mat-label>
     <input matInput placeholder="Distância percorrida" [(ngModel)]="atividade.distancia" required>
-    <!-- <mat-error *ngIf="senha.invalid">{{getSenhaErrorMessage()}}</mat-error> -->
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="mat-form-simples">
     <mat-label>Duração de exercício</mat-label>
     <input  matInput [(ngModel)]="atividade.tempo" placeholder="tempo de duração"  required>
-    <!-- <mat-error *ngIf="cpf.invalid">{{getCPFErrorMessage()}}</mat-error> -->
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="cadastrar()">Adicionar</button>
+  <button mat-raised-button color="primary" (click)="cadastrar()">{{ botaoAdd }}</button>
 </div>

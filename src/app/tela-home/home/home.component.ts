@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { Atividade } from 'src/app/shared/model/Atividade';
 import { AtividadeService } from 'src/app/shared/services/atividade.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,48 +11,65 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class HomeComponent {
 
-  atividades: Array<Atividade> = [];
-  atividade: Atividade;
+  atividades: Atividade[] = [];
 
-  constructor(public dialog: MatDialog, private atividadeService: AtividadeService,  private router: Router, private rotaAtual: ActivatedRoute) {
-    this.atividade = new Atividade();
-  }
+  constructor(
+    public dialog: MatDialog,
+    private atividadeService: AtividadeService
+  ) {}
 
   ngOnInit(): void {
-    this.atividadeService.listar().subscribe(
-      (atividades: Atividade[]) => {
-        this.atividades = atividades;
-      }
-    );
-  }
-
-  openDialog() {
-    const dialog = this.dialog.open(ModalComponent).afterClosed().subscribe((response) =>
-    {
-    console.log(response);
     this.listar();
-    }
-   )
   }
 
-  listar(): void {
-    this.atividadeService.listar().subscribe({
-      next: (atividades: Atividade[] ) => {
-        this.atividades = atividades;
-      },
-      error: error => console.error(error)
+  openDialog(isEdicao: boolean, atividade?: Atividade) {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: {
+        isEdicao: isEdicao,
+        atividade: atividade
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.listar();
     });
   }
 
-  excluir(atvARemover: Atividade): void {
-    this.atividadeService.excluir(atvARemover).subscribe(
-      () => {
-        console.log('Usuário excluído com sucesso');
-        this.listar(); // Atualiza a lista de usuários após a exclusão
+
+  listar(): void {
+    this.atividadeService.listar().subscribe({
+      next: (atividades: Atividade[]) => {
+        this.atividades = atividades;
       },
-      error => {
-        console.error('Erro ao excluir usuário:', error);
+      error: (error: any) => {
+        console.error(error);
       }
-    );
+    });
   }
+
+
+  excluir(atividade: Atividade): void {
+    this.atividadeService.excluir(atividade).subscribe({
+      next: () => {
+        this.listar();
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+  }
+
+  editar(atividade: Atividade): void {
+    this.openDialog(true, atividade);
+    this.atividadeService.editar(atividade).subscribe({
+      next: () => {
+        this.listar();
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+  }
+
+
 }
