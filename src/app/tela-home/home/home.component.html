@@ -10,14 +10,15 @@
     <mat-card  *ngFor="let atividade of atividades" class="mat-card-simples">
       <mat-card-header>
         <mat-card-title>
-          <mat-icon id="icard">person</mat-icon>
-          {{atividade.nameTag}}</mat-card-title>
+          {{atividade.atividade}}</mat-card-title>
         <!-- <mat-card-subtitle class="sub"></mat-card-subtitle> -->
       </mat-card-header>
       <!-- <img mat-card-image>  -->
       <mat-card-content>
-        Distância: {{atividade.distancia}}KM  Duração: {{atividade.tempo}}Hrs
-        Atividade: {{atividade.atividade}}
+        Atividade: {{atividade.atividade}} <br>
+        Distância: {{atividade.distancia}} <br>
+        Duração: {{atividade.tempo}}
+
       </mat-card-content>
       <mat-card-actions>
         <button mat-button color="black"(click)="editar(atividade)"><mat-icon>create</mat-icon></button>

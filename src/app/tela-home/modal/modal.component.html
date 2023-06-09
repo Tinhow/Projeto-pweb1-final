@@ -1,28 +1,34 @@
 <h1 mat-dialog-title>{{tituloDialog}}<button id="cnclbtn" mat-mini-fab color="warn" (click)="cancel()"><mat-icon class="iconclean">clear</mat-icon></button> </h1>
 
 <div  fxLayout="column" mat-dialog-content>
-  <mat-form-field appearance="fill" class="mat-form-simples" submit="cadastrar()">
-    <mat-label>nome de atividade</mat-label>
-    <input matInput [(ngModel)]="atividade.nameTag" placeholder="apelido para atividade" required>
-  </mat-form-field>
 
   <mat-form-field appearance="fill" class="mat-form-simples">
     <mat-label>Tipo de atividade</mat-label>
-    <mat-select id="ativSel" [(ngModel)]="atividade.atividade">
-      <mat-option *ngFor="let atividade of ativis" [value]="atividade">
+    <mat-select id="ativSel" [(ngModel)]="atividade.atividade" required>
+      <mat-option *ngFor="let atividade of tipoAtividades" [value]="atividade" >
         {{atividade}}
       </mat-option>
-    </mat-select>  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="mat-form-simples">
-    <mat-label>Distância percorrida</mat-label>
-    <input matInput placeholder="Distância percorrida" [(ngModel)]="atividade.distancia" required>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="mat-form-simples">
-    <mat-label>Duração de exercício</mat-label>
-    <input  matInput [(ngModel)]="atividade.tempo" placeholder="tempo de duração"  required>
+    <mat-label>Distancia Percorrida</mat-label>
+    <mat-select id="ativSel" [(ngModel)]="atividade.distancia" required>
+      <mat-option *ngFor="let atividade of distanciaAtividade" [value]="atividade">
+        {{atividade}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
+
+  <mat-form-field appearance="fill" class="mat-form-simples">
+    <mat-label>Duração da Atividade</mat-label>
+    <mat-select id="ativSel" [(ngModel)]="atividade.tempo" required>
+      <mat-option *ngFor="let atividade of duracaoAtividade" [value]="atividade">
+        {{atividade}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="cadastrar()">{{ botaoAdd }}</button>

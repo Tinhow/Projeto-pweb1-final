@@ -15,7 +15,9 @@ export class ModalComponent implements OnInit {
   atividades: Array<Atividade> = [];
   botaoAdd = "Adicionar";
   tituloDialog = "Adicionar nova atividade";
-  ativis: Array<string> = ['Musculação', 'Caminhada', 'Biking'];
+  tipoAtividades: Array<string> = ['Musculação', 'Caminhada', 'Natação', 'Ciclismo', 'Corrida', 'Crossfit', 'Outros'];
+  distanciaAtividade : Array<string> = ['N/A', '1 km', '2 km', '3 km', '5 km', '10 km', '15 km', '20 km'];
+  duracaoAtividade: Array<string> = ['1 Hora', '2 Horas', '3 Horas', '4 Horas', '5 Horas',];
 
   constructor(private atividadeService: AtividadeService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
     this.atividade = new Atividade();

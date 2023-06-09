@@ -27,18 +27,32 @@
   ],
   "atividades": [
     {
-      "id": 3,
-      "atividade": "caminhada",
-      "nameTag": "pedal",
-      "distancia": "2",
-      "tempo": "3"
+      "id": 1,
+      "atividade": "Musculação",
+      "nameTag": "",
+      "distancia": "N/A",
+      "tempo": "1 Hora"
     },
     {
-      "id": 5,
-      "atividade": "natação",
-      "nameTag": "nado",
-      "distancia": "1",
-      "tempo": "1"
+      "id": 2,
+      "atividade": "Caminhada",
+      "nameTag": "",
+      "distancia": "2 km",
+      "tempo": "1 Hora"
+    },
+    {
+      "id": 3,
+      "atividade": "Natação",
+      "nameTag": "",
+      "distancia": "1 km",
+      "tempo": "2 Horas"
+    },
+    {
+      "id": 4,
+      "atividade": "Corrida",
+      "nameTag": "",
+      "distancia": "5 km",
+      "tempo": "2 Horas"
     }
   ]
 }

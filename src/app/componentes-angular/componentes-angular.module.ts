@@ -7,16 +7,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterLink, RouterModule } from '@angular/router';
 import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import { pipe } from 'rxjs';
 import { PipesModule } from '../pipes/pipes.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatOption, MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [],
@@ -37,7 +39,8 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     MatDialogModule,
     PipesModule,
-    MatMenuModule
+    MatMenuModule,
+    MatOptionModule
   ],
   exports: [
     CommonModule,
@@ -58,7 +61,10 @@ import { MatTableModule } from '@angular/material/table';
     MatDialogModule,
     PipesModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatError
 
   ]
 })
