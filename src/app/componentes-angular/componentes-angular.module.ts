@@ -16,8 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { pipe } from 'rxjs';
 import { PipesModule } from '../pipes/pipes.module';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatTableModule} from '@angular/material/table';
-
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [],
@@ -38,7 +37,8 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     MatDialogModule,
     PipesModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
   exports: [
     CommonModule,
@@ -60,6 +60,7 @@ import {MatTableModule} from '@angular/material/table';
     PipesModule,
     MatMenuModule,
     MatTableModule
+
   ]
 })
 export class ComponentesAngularModule { }
