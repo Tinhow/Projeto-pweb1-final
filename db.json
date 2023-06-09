@@ -71,13 +71,6 @@
       "nameTag": "nado",
       "distancia": "1",
       "tempo": "1"
-    },
-    {
-      "id": 6,
-      "atividade": "Biking",
-      "nameTag": "corrida",
-      "distancia": "2",
-      "tempo": "1"
     }
   ]
 }
