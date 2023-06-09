@@ -7,12 +7,13 @@ import { ModalComponent } from './modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ModalComponent,
-    
+
   ],
   imports: [
     CommonModule,
@@ -21,7 +22,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     FormsModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule
   ],
   exports: [
     HomeComponent

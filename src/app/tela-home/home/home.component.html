@@ -1,11 +1,16 @@
 <div class="container" fxFlex="row">
-  <div id="logo" >
-    <img src="../../../assets/img/logo.svg" alt="">
+
+  <app-menu></app-menu>
+
+  <div>
+    <img class="thumb" src="../../../assets/img/capa home.jpg" alt="capa da home">
   </div>
 
-  <h1 class="titulo">Minhas Atividades</h1>
+  <div class="addAtv">
+    <p>adicionar atividade</p>
+    <button id="addbtn" mat-fab color="primary" (click)="openDialog(false)"><mat-icon>add</mat-icon></button>
+  </div>
 
-  <button id="addbtn" mat-fab color="primary" (click)="openDialog(false)"><mat-icon>add</mat-icon></button>
   <div  fxLayout="column" fxLayoutAlign="start start">
     <mat-card  *ngFor="let atividade of atividades" class="mat-card-simples">
       <mat-card-header>
@@ -25,10 +30,8 @@
         <button mat-button color="warn" (click)="excluir(atividade)"><mat-icon>delete</mat-icon></button>
       </mat-card-actions>
     </mat-card>
-
   </div>
-  <!-- <div id="mc" fxFlex="60%">
-    <img src="../../../assets/img/manocorrendo.png" alt="">
-  </div> -->
+  <app-rodape></app-rodape>
+
 </div>
 

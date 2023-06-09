@@ -5,6 +5,7 @@ import { CadastroModule } from './cadastro/cadastro.module';
 import { ComponentesAngularModule } from './componentes-angular/componentes-angular.module';
 import { TelaHomeModule } from './tela-home/tela-home.module';
 import { ListagemUsersModule } from './listagem-users/listagem-users.module';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { ListagemUsersModule } from './listagem-users/listagem-users.module';
     ComponentesAngularModule,
     CadastroModule,
     TelaHomeModule,
-    ListagemUsersModule
+    ListagemUsersModule,
+    LayoutModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
