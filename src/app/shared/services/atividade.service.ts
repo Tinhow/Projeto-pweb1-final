@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Atividade } from '../model/Atividade';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
 import { of , defer } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'

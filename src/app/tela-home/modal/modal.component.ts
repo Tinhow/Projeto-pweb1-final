@@ -5,7 +5,6 @@ import { AtividadeService } from 'src/app/shared/services/atividade.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -15,7 +14,8 @@ export class ModalComponent implements OnInit {
   atividade: Atividade;
   atividades: Array<Atividade> = [];
   botaoAdd = "Adicionar";
-  tituloDialog = "Adicionar nova atividade"
+  tituloDialog = "Adicionar nova atividade";
+  ativis: Array<string> = ['Musculação', 'Caminhada', 'Biking'];
 
   constructor(private atividadeService: AtividadeService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
     this.atividade = new Atividade();

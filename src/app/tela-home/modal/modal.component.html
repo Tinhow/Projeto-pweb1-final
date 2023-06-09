@@ -8,8 +8,11 @@
 
   <mat-form-field appearance="fill" class="mat-form-simples">
     <mat-label>Tipo de atividade</mat-label>
-    <input matInput placeholder="tipo de atividade" [(ngModel)]="atividade.atividade"  required>
-  </mat-form-field>
+    <mat-select id="ativSel" [(ngModel)]="atividade.atividade">
+      <mat-option *ngFor="let atividade of ativis" [value]="atividade">
+        {{atividade}}
+      </mat-option>
+    </mat-select>  </mat-form-field>
 
   <mat-form-field appearance="fill" class="mat-form-simples">
     <mat-label>Distância percorrida</mat-label>
