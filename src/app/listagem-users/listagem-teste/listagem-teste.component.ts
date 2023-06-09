@@ -1,5 +1,6 @@
+import {MatTableDataSource} from '@angular/material/table';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
@@ -10,40 +11,38 @@ import { UsuarioService } from 'src/app/shared/services/usuario.service';
 })
 export class ListagemTesteComponent implements OnInit {
 
-  usuarios: Array<Usuario> = [];
-  usuario: Usuario;
+  dataSource: MatTableDataSource<Usuario>;
+  mostrarColunas = ['nome', 'cpf', 'idade','acoes'];
 
-  constructor(private usuarioService: UsuarioService,  private router: Router, private rotaAtual: ActivatedRoute) {
-    this.usuario = new Usuario();
+  constructor(private usuarioService: UsuarioService, private roteador: Router) {
+    this.dataSource = new MatTableDataSource();
   }
 
   ngOnInit(): void {
     this.usuarioService.listar().subscribe(
-      (usuarios: Usuario[]) => {
-        this.usuarios = usuarios;
+      usuarios => this.dataSource = new MatTableDataSource(usuarios)
+    );
+  }
+
+  filtrar(texto: string): void {
+    this.dataSource.filter = texto.trim().toLowerCase();
+  }
+
+  apagar(id: number): void {
+    console.log('apagando');
+    this.usuarioService.excluir(id).subscribe(
+      apagado => {
+        const indx = this.dataSource.data.findIndex(usuario => usuario.id === id);
+        if (indx > -1) {
+          this.dataSource.data.splice(indx, 1);
+          this.dataSource = new MatTableDataSource<Usuario>(this.dataSource.data);
+        }
       }
     );
   }
 
-  listar(): void {
-    this.usuarioService.listar().subscribe({
-      next: (usuarios: Usuario[]) => {
-        this.usuarios = usuarios;
-      },
-      error: error => console.error(error)
-    });
+  editar(usuario: Usuario): void {
+    console.log('editando');
+    this.roteador.navigate(['cadastro', usuario.id]);
   }
-
-  excluir(usuarioARemover: Usuario): void {
-    this.usuarioService.excluir(usuarioARemover).subscribe(
-      () => {
-        console.log('Usuário excluído com sucesso');
-        this.listar(); // Atualiza a lista de usuários após a exclusão
-      },
-      error => {
-        console.error('Erro ao excluir usuário:', error);
-      }
-    );
-  }
-
 }

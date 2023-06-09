@@ -1,23 +1,51 @@
-<div class="body">
 
-  <h1>Usuarios cadastrados</h1>
+<H1>Usuarios Cadastrados</H1>
+<mat-form-field>
+  <mat-label>Filtro</mat-label>
+  <input matInput placeholder="filtre por qualquer campo" (keyup)="filtrar(inputFiltro.value)" #inputFiltro>
+</mat-form-field>
 
-  <div fxLayout="row wrap"  fxLayout.lt-sm="column">
-    <mat-card *ngFor="let usuario of usuarios" class="mat-card-simples">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>person</mat-icon>
-          {{usuario.nome}}</mat-card-title>
-        <mat-card-subtitle class="sub" *ngIf="usuario.cpf.length">CPF: {{usuario.cpf | cpf}}  Idade: {{usuario.idade}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>Email: {{usuario.email}}</p>
+<mat-table [dataSource]="dataSource">
+  <mat-header-row *matHeaderRowDef="mostrarColunas"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: mostrarColunas;"></mat-row>
 
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button color="primary" [routerLink]="['/editarUsuario', usuario.id]"> Editar</button>
-        <button mat-button color="warn" (click)="excluir(usuario)">Excluir</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</div>
+  <!--  Forma de geração de linhas com FOR-->
+  <!--  <ng-container matColumnDef="{{coluna}}" *ngFor="let coluna of mostrarColunas">-->
+  <!--    <mat-header-cell *matHeaderCellDef>{{coluna | titlecase}}</mat-header-cell>-->
+  <!--    <mat-cell *matCellDef="let item">-->
+  <!--      <div *ngIf="coluna != 'acoes'">{{item[coluna]}}</div>-->
+  <!--      <div *ngIf="coluna == 'acoes'">-->
+  <!--        <button mat-icon-button><mat-icon>edit</mat-icon></button>-->
+  <!--        <button mat-icon-button><mat-icon (click)="apagar(item.id)">delete</mat-icon></button>-->
+  <!--      </div>-->
+  <!--    </mat-cell>-->
+  <!--  </ng-container>-->
+
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{item.nome}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cpf">
+    <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{item.cpf | cpf}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="idade">
+    <mat-header-cell *matHeaderCellDef>Idade</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{item.idade}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+    <mat-cell *matCellDef="let item">
+      <button mat-icon-button [routerLink]="['/editarUsuario', item.id]">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="apagar(item.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+</mat-table>

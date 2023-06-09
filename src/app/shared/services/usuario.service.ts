@@ -46,8 +46,8 @@ export class UsuarioService {
   }
 
 
-  excluir(usuarioARemover: Usuario): Observable<any> {
-    return this.httpClient.delete(`${this.URL_USUARIOS}/${usuarioARemover.id}`);
+  excluir(id: number): Observable<Usuario> {
+    return this.httpClient.delete<Usuario>(`${this.URL_USUARIOS}/${id}`)
   }
 
   editar(usuario: Usuario): Observable<Usuario> {
