@@ -37,8 +37,7 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     MatDialogModule,
     PipesModule,
-    MatMenuModule,
-    MatSelectModule
+    MatMenuModule
   ],
   exports: [
     CommonModule,
