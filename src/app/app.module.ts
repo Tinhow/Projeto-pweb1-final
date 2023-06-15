@@ -6,6 +6,7 @@ import { ComponentesAngularModule } from './componentes-angular/componentes-angu
 import { TelaHomeModule } from './tela-home/tela-home.module';
 import { ListagemUsersModule } from './listagem-users/listagem-users.module';
 import { LayoutModule } from './layout/layout.module';
+import { FirestoreModule } from './firestore/firestore.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { LayoutModule } from './layout/layout.module';
     CadastroModule,
     TelaHomeModule,
     ListagemUsersModule,
-    LayoutModule
+    LayoutModule,
+    FirestoreModule
+
 
   ],
   providers: [],

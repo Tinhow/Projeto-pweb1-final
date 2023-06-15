@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
+import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
 
 @Component({
   selector: 'app-listagem-teste',
@@ -14,7 +15,7 @@ export class ListagemTesteComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario>;
   mostrarColunas = ['nome', 'cpf', 'idade','acoes'];
 
-  constructor(private usuarioService: UsuarioService, private roteador: Router) {
+  constructor(private usuarioService: UsuarioFirestoreService, private roteador: Router) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -30,15 +31,15 @@ export class ListagemTesteComponent implements OnInit {
 
   apagar(id: number): void {
     console.log('apagando');
-    this.usuarioService.excluir(id).subscribe(
-      apagado => {
-        const indx = this.dataSource.data.findIndex(usuario => usuario.id === id);
-        if (indx > -1) {
-          this.dataSource.data.splice(indx, 1);
-          this.dataSource = new MatTableDataSource<Usuario>(this.dataSource.data);
-        }
-      }
-    );
+    // this.usuarioService.excluir(id).subscribe(
+    //   apagado => {
+    //     const indx = this.dataSource.data.findIndex(usuario => usuario.id === String(id));
+    //     if (indx > -1) {
+    //       this.dataSource.data.splice(indx, 1);
+    //       this.dataSource = new MatTableDataSource<Usuario>(this.dataSource.data);
+    //     }
+    //   }
+    //);
   }
 
   editar(usuario: Usuario): void {
