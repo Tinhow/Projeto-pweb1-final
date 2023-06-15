@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
-import { UsuarioService } from 'src/app/shared/services/usuario.service';
+import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
 
 @Component({
   selector: 'app-tela-cadastro',
@@ -25,7 +25,7 @@ export class TelaCadastroComponent {
   constructor(
     private rotaAtual: ActivatedRoute,
     private roteador: Router,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioFirestoreService
   ) {
     this.usuario = new Usuario();
     const idParaEdicao = this.rotaAtual.snapshot.paramMap.get('id');
@@ -33,31 +33,33 @@ export class TelaCadastroComponent {
 
       this.estahCadastrando = false;
       this.botaoSalvar = 'Salvar';
-      this.usuarioService.bucarId(Number(idParaEdicao)).subscribe(
-        usuario => this.usuario = usuario);
-        (error: any) => {
-          console.error(error);
+      this.usuarioService.pesquisarPorId(String(idParaEdicao)).subscribe(
+        usuario => {
+          if (usuario) {
+            this.usuario = usuario;
+          }
         }
+      );
     }
   }
 
   cadastrar(): void {
     if(this.botaoSalvar === 'Salvar'){
-      this.usuarioService.editar(this.usuario).subscribe();
+      this.usuarioService.atualizar(this.usuario).subscribe();
       console.log(this.usuario);
       this.roteador.navigate(['/homePage']);
     }
 
-    this.usuarioService.cadastrar(this.usuario).subscribe({
-      next: (usuarioCadastrado: Usuario) => {
+    this.usuarioService.inserir(this.usuario).subscribe(
+      (usuarioCadastrado: Usuario) => {
         console.log(usuarioCadastrado);
         this.roteador.navigate(['/homePage']);
         this.usuario = new Usuario();
       },
-      error: (error: any) => {
+      (error: any) => {
         console.error(error);
       }
-    });
+    );
   }
 
 
