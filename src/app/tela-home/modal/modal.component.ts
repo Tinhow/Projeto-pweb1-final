@@ -55,8 +55,7 @@ export class ModalComponent implements OnInit {
         console.error(error);
       }
     );
-
+    this.cancel();
   }
-
 }
 
