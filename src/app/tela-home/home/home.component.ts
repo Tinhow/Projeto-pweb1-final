@@ -50,7 +50,9 @@ export class HomeComponent {
 
 
   excluir(atividade: Atividade): void {
-    this.atividadeService.remover(String(atividade)).subscribe({
+    const atividadeId: string = atividade.id || ''; // Verifica se atividade.id está definido, caso contrário, atribui uma string vazia
+
+    this.atividadeService.apagar(atividadeId).subscribe({
       next: () => {
         this.listar();
       },
@@ -59,6 +61,8 @@ export class HomeComponent {
       }
     });
   }
+
+
 
   editar(atividade: Atividade): void {
     this.openDialog(true, atividade);

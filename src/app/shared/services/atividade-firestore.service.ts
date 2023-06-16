@@ -48,7 +48,7 @@ export class AtividadeFirestoreService {
   }
 
 
-  remover(id: string): Observable<void> {
+  apagar(id: string): Observable<void> {
     return from(this.colecaoAtividades.doc(id).delete());
   }
 
