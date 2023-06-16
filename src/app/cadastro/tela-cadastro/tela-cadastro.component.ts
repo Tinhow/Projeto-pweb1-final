@@ -62,7 +62,7 @@ export class TelaCadastroComponent {
 
 
   getNameErrorMessage(): string {
-    return 'Por favor, forneça seu nome.';
+    return 'Por , forneça seu nome.';
   }
 
   getEmailErrorMessage(): string {

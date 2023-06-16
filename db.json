@@ -41,17 +41,24 @@
       "tempo": "1 Hora"
     },
     {
-      "id": 3,
-      "atividade": "Natação",
+      "id": 6,
+      "atividade": "Musculação",
       "nameTag": "",
-      "distancia": "1 km",
-      "tempo": "2 Horas"
+      "distancia": "2 km",
+      "tempo": "3 Horas"
     },
     {
-      "id": 4,
-      "atividade": "Corrida",
+      "id": 7,
+      "atividade": "Musculação",
       "nameTag": "",
-      "distancia": "5 km",
+      "distancia": "2 km",
+      "tempo": "3 Horas"
+    },
+    {
+      "id": 8,
+      "atividade": "Ciclismo",
+      "nameTag": "",
+      "distancia": "2 km",
       "tempo": "2 Horas"
     }
   ]

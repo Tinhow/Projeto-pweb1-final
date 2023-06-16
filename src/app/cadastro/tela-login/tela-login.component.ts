@@ -20,7 +20,7 @@ export class TelaLoginComponent {
   constructor(
     private rotaAtual: ActivatedRoute,
     private roteador: Router,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
   ) {}
 
   logar(): void {
@@ -42,7 +42,8 @@ export class TelaLoginComponent {
     return 'Por favor, forneça um email válido';
   }
 
-  getSenhaErrorMessage() {
-    return 'Por favor, forneça uma senha válida';
+  getSenhaErrorMessage(){
+    return 'Por favor, forneça um email válido';
+
   }
 }
