@@ -1,6 +1,6 @@
 import { Atividade } from 'src/app/shared/model/Atividade';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
 import { Observable, from, map } from 'rxjs';
 
 @Injectable({
@@ -16,28 +16,51 @@ export class AtividadeFirestoreService {
   }
 
   listar(): Observable<Atividade[]> {
-    return this.colecaoAtividades.valueChanges({idField: 'id'});
+    return this.colecaoAtividades.valueChanges({ idField: 'id' });
   }
 
-  inserir(atividade: Atividade): Observable<Atividade> {
+  cadastrar(atividade: Atividade): Observable<Atividade> {
     delete atividade.id;
-    return from(this.colecaoAtividades.add(Object.assign({}, atividade)));
+    const ativdadeInserida = Object.assign({}, atividade);
+    return from(this.colecaoAtividades.add(ativdadeInserida)).pipe(
+      map((docRef) => {
+        atividade.id = docRef.id;
+        return atividade;
+      })
+    );
   }
 
-  pesquisarPorId(id: string): Observable<Atividade> {
-    const doc = this.colecaoAtividades.doc(id).get();
-    doc.subscribe(d => console.log(d));
-
-    return doc.pipe(map(document => new Atividade(document.id, document.data())));
+  pesquisarPorId(id: string): Observable<Atividade | undefined> {
+    return this.colecaoAtividades.doc<Atividade>(id).get().pipe(
+      map(document => {
+        if (document.exists) {
+          const data = document.data();
+          if (data) {
+            return new Atividade(document.id, data.atividade, data.distancia, data.nameTag, data.tempo);
+          } else {
+            return undefined;
+          }
+        } else {
+          return undefined;
+        }
+      })
+    );
   }
+
 
   remover(id: string): Observable<void> {
     return from(this.colecaoAtividades.doc(id).delete());
   }
 
-  alterar(atividade: Atividade): Observable<void> {
+  editar(atividade: Atividade): Observable<void> {
     delete atividade.id;
     return from(this.colecaoAtividades.doc(atividade.id).update(Object.assign({}, atividade)));
+  }
+
+  atualizar(atividade: Atividade): Observable<void> {
+    const id = atividade.id;
+    delete atividade.id;
+    return from(this.colecaoAtividades.doc(id).update(Object.assign({}, atividade)));
   }
 
 }

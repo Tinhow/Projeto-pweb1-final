@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {from, Observable} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
-import {map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import { Usuario } from '../model/Usuario';
 
 
@@ -24,16 +24,16 @@ export class UsuarioFirestoreService {
    return this.colecaoUsuarios.valueChanges({idField: 'id'});
  }
 
- inserir(usuario: Usuario): Observable<Usuario> {
-  delete usuario.id;
-  const usuarioInserido = Object.assign({}, usuario);
-  return from(this.colecaoUsuarios.add(usuarioInserido)).pipe(
-    map((docRef) => {
-      usuario.id = docRef.id;
-      return usuario;
-    })
-  );
-}
+  inserir(usuario: Usuario): Observable<Usuario> {
+    delete usuario.id;
+    const usuarioInserido = Object.assign({}, usuario);
+    return from(this.colecaoUsuarios.add(usuarioInserido)).pipe(
+      map((docRef) => {
+        usuario.id = docRef.id;
+        return usuario;
+      })
+    );
+  }
 
  apagar(id: string): Observable<void> {
    return from(this.colecaoUsuarios.doc(id).delete());
@@ -68,6 +68,22 @@ export class UsuarioFirestoreService {
    usuariosMaioresIdade = this.afs.collection(this.NOME_COLECAO, ref => ref.where('idade', '>', '17'));
    return usuariosMaioresIdade.valueChanges();
  }
+
+ logar(usuario: Usuario): Observable<Usuario> {
+  return this.listar().pipe(
+    map((usuarios: Usuario[]) => {
+      const usuarioEncontrado = usuarios.find(u => u.email === usuario.email && u.senha === usuario.senha);
+      if (usuarioEncontrado) {
+        return usuarioEncontrado;
+      } else {
+        throw new Error('Usuário não encontrado');
+      }
+    }),
+    catchError((error: any) => {
+      throw error;
+    })
+  );
+}
 
 }
 

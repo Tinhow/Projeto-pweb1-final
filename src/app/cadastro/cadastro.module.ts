@@ -10,8 +10,8 @@ import { PipesModule } from '../pipes/pipes.module';
     TelaCadastroComponent
   ],
   imports: [
-    ComponentesAngularModule,
-    PipesModule
+    PipesModule,
+    ComponentesAngularModule
 
   ],
   exports:[

@@ -3,6 +3,7 @@ import { Atividade } from 'src/app/shared/model/Atividade';
 import { AtividadeService } from 'src/app/shared/services/atividade.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { AtividadeFirestoreService } from 'src/app/shared/services/atividade-firestore.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent {
 
   constructor(
     public dialog: MatDialog,
-    private atividadeService: AtividadeService
+    private atividadeService: AtividadeFirestoreService
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +50,7 @@ export class HomeComponent {
 
 
   excluir(atividade: Atividade): void {
-    this.atividadeService.excluir(atividade).subscribe({
+    this.atividadeService.remover(String(atividade)).subscribe({
       next: () => {
         this.listar();
       },

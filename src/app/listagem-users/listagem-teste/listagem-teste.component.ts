@@ -31,15 +31,15 @@ export class ListagemTesteComponent implements OnInit {
 
   apagar(id: number): void {
     console.log('apagando');
-    // this.usuarioService.excluir(id).subscribe(
-    //   apagado => {
-    //     const indx = this.dataSource.data.findIndex(usuario => usuario.id === String(id));
-    //     if (indx > -1) {
-    //       this.dataSource.data.splice(indx, 1);
-    //       this.dataSource = new MatTableDataSource<Usuario>(this.dataSource.data);
-    //     }
-    //   }
-    //);
+     this.usuarioService.apagar(String(id)).subscribe(
+       apagado => {
+         const indx = this.dataSource.data.findIndex(usuario => usuario.id === String(id));
+         if (indx > -1) {
+           this.dataSource.data.splice(indx, 1);
+           this.dataSource = new MatTableDataSource<Usuario>(this.dataSource.data);
+         }
+       }
+    );
   }
 
   editar(usuario: Usuario): void {

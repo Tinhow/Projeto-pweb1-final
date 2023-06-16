@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
+import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class TelaLoginComponent {
   constructor(
     private rotaAtual: ActivatedRoute,
     private roteador: Router,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioFirestoreService
   ) {}
 
   logar(): void {

@@ -4,6 +4,7 @@ import { Atividade } from 'src/app/shared/model/Atividade';
 import { AtividadeService } from 'src/app/shared/services/atividade.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AtividadeFirestoreService } from 'src/app/shared/services/atividade-firestore.service';
 
 @Component({
   selector: 'app-modal',
@@ -18,8 +19,9 @@ export class ModalComponent implements OnInit {
   tipoAtividades: Array<string> = ['Musculação', 'Caminhada', 'Natação', 'Ciclismo', 'Corrida', 'Crossfit', 'Outros'];
   distanciaAtividade : Array<string> = ['N/A', '1 km', '2 km', '3 km', '5 km', '10 km', '15 km', '20 km'];
   duracaoAtividade: Array<string> = ['1 Hora', '2 Horas', '3 Horas', '4 Horas', '5 Horas',];
+  botaoAdicionar: string = 'Adicionar';
 
-  constructor(private atividadeService: AtividadeService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
+  constructor(private atividadeService: AtividadeFirestoreService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
     this.atividade = new Atividade();
   }
 
@@ -39,25 +41,21 @@ export class ModalComponent implements OnInit {
   }
 
   cadastrar(): void {
-    if (this.botaoAdd === 'Adicionar') {
-      this.atividadeService.cadastrar(this.atividade).subscribe({
-        next: () => {
-          this.cancel();
-        },
-        error: (error: any) => {
-          console.error(error);
-        }
-      });
-    } else {
-      this.atividadeService.editar(this.atividade).subscribe({
-        next: () => {
-          this.cancel();
-        },
-        error: (error: any) => {
-          console.error(error);
-        }
-      });
+    if(this.botaoAdicionar === 'Adicionar'){
+      this.atividadeService.cadastrar(this.atividade).subscribe();
+      console.log(this.atividade);
     }
+
+    this.atividadeService.atualizar(this.atividade).subscribe(
+      () => {
+        console.log("Atividade atualizada com sucesso");
+        this.atividade = new Atividade();
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+
   }
 
 }
