@@ -1,11 +1,12 @@
 .mat-card-simples{
   width: 17%;
   height: 10%;
-  background-color: aliceblue;
+  background-color: rgb(249, 240, 255);
   margin-top: 20px;
   margin-left: 20px;
-  border: solid blue;
+  border: 4px solid #7648b1;
   margin: 10px;
+  border-radius: 20px;
 }
 
 .icon{
@@ -14,13 +15,16 @@
 }
 .container {
   min-height: 100vh;
-  background-color: black;
+  background-color: #3d3d3d;
 }
 
 #addbtn {
-  margin-left: 20px;
+  margin: 20px 0 5px 20px;
 }
 
+// .addAtv{
+
+// }
 
 
 .thumb {
@@ -30,4 +34,3 @@
 p{
   color: white;
 }
-
