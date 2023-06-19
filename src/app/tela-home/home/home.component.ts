@@ -63,18 +63,18 @@ export class HomeComponent {
   }
 
 
-
   editar(atividade: Atividade): void {
-    this.openDialog(true, atividade);
     this.atividadeService.editar(atividade).subscribe({
       next: () => {
         this.listar();
+        this.openDialog(true, atividade);
       },
       error: (error: any) => {
         console.error(error);
       }
     });
   }
+
 
 
 }

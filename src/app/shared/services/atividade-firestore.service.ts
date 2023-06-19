@@ -1,7 +1,8 @@
 import { Atividade } from 'src/app/shared/model/Atividade';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
+import {AngularFirestore, AngularFirestoreCollection,  DocumentData} from '@angular/fire/compat/firestore';
 import { Observable, from, map } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,21 +31,10 @@ export class AtividadeFirestoreService {
     );
   }
 
-  pesquisarPorId(id: string): Observable<Atividade | undefined> {
-    return this.colecaoAtividades.doc<Atividade>(id).get().pipe(
-      map(document => {
-        if (document.exists) {
-          const data = document.data();
-          if (data) {
-            return new Atividade(document.id, data.atividade, data.distancia, data.nameTag, data.tempo);
-          } else {
-            return undefined;
-          }
-        } else {
-          return undefined;
-        }
-      })
-    );
+  pesquisarPorId(id: string): Observable<Atividade> {
+    // como o objeto retornado pelo get é um DocumentData, e não um usuário, transformamos a partir de um pipe e mapeamos de um document
+    //  para o tipo usuário
+    return this.colecaoAtividades.doc(id).get().pipe(map(document => new Atividade(document.id, document.data())));
   }
 
 
@@ -53,14 +43,23 @@ export class AtividadeFirestoreService {
   }
 
   editar(atividade: Atividade): Observable<void> {
-    delete atividade.id;
-    return from(this.colecaoAtividades.doc(atividade.id).update(Object.assign({}, atividade)));
+    const id = atividade.id;
+    const atividadeAtualizada = { ...atividade };
+    delete atividadeAtualizada.id;
+
+    return from(this.colecaoAtividades.doc(id).set(atividadeAtualizada, { merge: true }));
   }
+
 
   atualizar(atividade: Atividade): Observable<void> {
     const id = atividade.id;
-    delete atividade.id;
-    return from(this.colecaoAtividades.doc(id).update(Object.assign({}, atividade)));
+    const atividadeAtualizada = { ...atividade };
+    delete atividadeAtualizada.id;
+
+    return from(this.colecaoAtividades.doc(id).update(atividadeAtualizada as DocumentData));
   }
 
 }
+
+
+

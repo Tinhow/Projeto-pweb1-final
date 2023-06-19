@@ -29,7 +29,8 @@ export class ModalComponent implements OnInit {
     if (this.data && this.data.isEdicao && this.data.atividade) {
       this.atividade = { ...this.data.atividade }; // Copia os dados da atividade recebida para o atributo 'atividade'
       this.botaoAdd = 'Alterar'; // Atualiza o valor para 'Alterar' se for uma ação de edição
-      this.tituloDialog = "Editar atividade"
+      this.tituloDialog = "Editar atividade";
+
     } else {
       this.atividade = new Atividade(); // Cria um novo objeto 'Atividade' caso seja uma ação de criação
       this.botaoAdd = 'Adicionar'; // Mantém o valor como 'Adicionar' se for uma ação de criação
@@ -41,21 +42,28 @@ export class ModalComponent implements OnInit {
   }
 
   cadastrar(): void {
-    if(this.botaoAdicionar === 'Adicionar'){
-      this.atividadeService.cadastrar(this.atividade).subscribe();
-      console.log(this.atividade);
+    if (this.botaoAdd === 'Adicionar') {
+      this.atividadeService.cadastrar(this.atividade).subscribe({
+        next: (atividade: Atividade) => {
+          console.log(atividade);
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+    } else {
+      this.atividadeService.editar(this.atividade).subscribe({
+        next: () => {
+          console.log("Atividade atualizada com sucesso");
+          this.atividade = new Atividade();
+          this.cancel();
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
     }
-
-    this.atividadeService.atualizar(this.atividade).subscribe(
-      () => {
-        console.log("Atividade atualizada com sucesso");
-        this.atividade = new Atividade();
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-    this.cancel();
   }
+
 }
 

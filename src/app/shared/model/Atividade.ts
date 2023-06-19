@@ -1,9 +1,17 @@
-export class Atividade{
+export class Atividade {
+  id?: string;
+  exercicio = '';
+  nameTag = '';
+  distancia = '';
+  tempo = '';
 
-    constructor(public id?: string,
-        public atividade: string = '',
-        public nameTag: string = '',
-        public distancia: string = '',
-        public tempo: string = '') {
+  constructor(id?: string, atividade: Atividade = { exercicio: '', nameTag: '', distancia: '', tempo: '' }) {
+    this.id = id;
+    this.exercicio = atividade.exercicio;
+    this.nameTag = atividade.nameTag;
+    this.distancia = atividade.distancia;
+    this.tempo = atividade.tempo;
+  }
 }
-}
+
+

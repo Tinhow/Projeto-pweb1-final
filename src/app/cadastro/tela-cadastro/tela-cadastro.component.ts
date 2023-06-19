@@ -49,17 +49,18 @@ export class TelaCadastroComponent {
       console.log(this.usuario);
       this.roteador.navigate(['/homePage']);
     }
-
-    this.usuarioService.inserir(this.usuario).subscribe(
-      (usuarioCadastrado: Usuario) => {
-        console.log(usuarioCadastrado);
-        this.roteador.navigate(['/homePage']);
-        this.usuario = new Usuario();
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
+    else{
+      this.usuarioService.inserir(this.usuario).subscribe(
+        (usuarioCadastrado: Usuario) => {
+          console.log(usuarioCadastrado);
+          this.roteador.navigate(['/homePage']);
+          this.usuario = new Usuario();
+        },
+        (error: any) => {
+          console.error(error);
+        }
+      );
+    }
   }
 
 
