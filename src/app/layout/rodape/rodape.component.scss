@@ -1,15 +1,13 @@
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  background-color: white;
   padding: 20px;
-  background-color: #402760;
-  color: #ffffff;
+  text-align: center;
 }
 
 .footer-content {
+  display: flex;
   justify-content: space-between;
-  text-align: center;
+  align-items: center;
 }
 
 .footer-content p {
@@ -19,5 +17,5 @@ footer {
 nav a {
   margin-left: 10px;
   text-decoration: none;
-  color: #ffffff;
+  color: #333;
 }

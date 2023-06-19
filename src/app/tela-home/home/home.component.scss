@@ -1,12 +1,11 @@
 .mat-card-simples{
   width: 17%;
   height: 10%;
-  background-color: rgb(249, 240, 255);
+  background-color: aliceblue;
   margin-top: 20px;
   margin-left: 20px;
-  border: 4px solid #7648b1;
+  border: solid blue;
   margin: 10px;
-  border-radius: 20px;
 }
 
 .icon{
@@ -15,16 +14,13 @@
 }
 .container {
   min-height: 100vh;
-  background-color: #3d3d3d;
+  background-color: black;
 }
 
 #addbtn {
-  margin: 20px 0 5px 20px;
+  margin-left: 20px;
 }
 
-// .addAtv{
-
-// }
 
 
 .thumb {
@@ -34,15 +30,4 @@
 p{
   color: white;
 }
-#loader {
-  position: static;
-  width: 100vw;
-  overflow: hidden;
-  height: 262px;
-  left: 0px;
-  top: 64px;
-  }
-#loader img {
-  width: 100%;
-  display: block;
-}
+

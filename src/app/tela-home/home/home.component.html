@@ -1,15 +1,17 @@
 <div class="container" fxFlex="row">
 
   <app-menu></app-menu>
-  
-  <div id="loader"><img src="../../../assets/img/capa home.jpg" alt=""></div>
 
+  <div>
+    <img class="thumb" src="../../../assets/img/capa home.jpg" alt="capa da home">
+  </div>
 
   <div class="addAtv">
+    <p>adicionar atividade</p>
     <button id="addbtn" mat-fab color="primary" (click)="openDialog(false)"><mat-icon>add</mat-icon></button>
   </div>
 
-  <div fxLayout="row wrap" fxLayoutAlign="start end">
+  <div  fxLayout="column" fxLayoutAlign="start start">
     <mat-card  *ngFor="let atividade of atividades" class="mat-card-simples">
       <mat-card-header>
         <mat-card-title>
@@ -32,3 +34,4 @@
   <app-rodape></app-rodape>
 
 </div>
+
