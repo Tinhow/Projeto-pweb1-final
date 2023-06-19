@@ -1,17 +1,17 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+<div fxLayout="row" fxLayoutAlign="space-between center">
   <div class="nomeLogo">
-    <p>FITRACKER</p>
+    <p>FitTRacker</p>
   </div>
   <div class="menu" fxLayout="row" fxLayoutAlign="end center" >
     <button class="btmenu"  mat-raised-button >Sobre Nós</button>
     <button class="btmenu"  mat-raised-button >Contato</button>
     <button class="btmenu"  mat-raised-button >Home</button>
     <button class="btmenu" mat-raised-button [matMenuTriggerFor]="menu">Menu</button>
+
     <mat-menu #menu="matMenu">
       <button [routerLink]="['cadastroUsuario']" mat-menu-item>Cadastrar usuário</button>
       <button [routerLink]="['listagemUsers']" mat-menu-item>Listar Usuários</button>
       <button [routerLink]="['homePage']" mat-menu-item>Listar Usuários - Tabela</button>
     </mat-menu>
-  </div>  
-
+  </div>
 </div>

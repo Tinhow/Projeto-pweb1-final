@@ -1,25 +1,21 @@
-* {
-  background-color: #402760;
-}
 .menu {
-  background-color: #402760;
+  background-color: black;
   height: 5vh;
 }
 
 .btmenu{
   height: 100%;
   color: white !important;
-  background-color: #402760 !important;
+  background-color: black !important;
 }
 
 .btmenu:hover{
-  background-color: #69419e  !important;
+  background-color: #1a1a1a !important;
 }
 
 p{
-  font-family: 'Homenaje-regular','Helvetica', sans-serif;
-  font-size: 2.5rem;
+  color: white;
+  font-size: 1.5rem;
   margin-left: 1rem;
   margin-top: 1rem;
-  color: white;
 }
