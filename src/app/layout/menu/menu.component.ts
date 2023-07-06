@@ -22,11 +22,7 @@ export class MenuComponent {
     if(this.botaoHome === 'FITRACKER'){
       this.roteador.navigate(['/homePage']);
     }}
-  goTable(): void{
-    if(this.botaoTable === 'Listar Usuários - Tabela'){
-      this.roteador.navigate(['/listagemUsers'])
-    }
-  }
+
   goSign(): void{
     if(this.botaoSign === 'Cadastrar Usuário'){
       this.roteador.navigate(['/cadastro'])
