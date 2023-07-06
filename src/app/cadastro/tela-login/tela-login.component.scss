@@ -4,7 +4,7 @@
 }
 
 .a{
-  background-color: white;
+  background-color: #3d3d3d;
 }
 
 
@@ -14,7 +14,9 @@
 }
 
 .b{
-  background-color: #969FFC;
+  background-color: #402760;
+  color: #ffff
+  ;
 }
 
 .b {
@@ -45,8 +47,8 @@
 }
 
 .bt button:hover{
-  background-color: white;
-  color: #000;
+  background-color: rgb(255, 255, 255);
+  color: #8d8d8d;
 }
 
 .tituloLogin{
@@ -64,9 +66,9 @@
   gap: 1.5rem;
 }
 
-.mat-form-simples{
-  width: 100%;
-}
+// .mat-form-simples{
+//   width: 100%;
+// }
 
 .divLogo{
   display: flex;
@@ -86,7 +88,7 @@
 
 .imgUser {
   width: 9rem;
-  border: 2px solid black;
+  border: 2px solid rgb(255, 255, 255);
   border-radius: 50%;
   object-fit: cover;
 }
@@ -108,11 +110,11 @@
 
 a{
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 a:hover{
-  color: white;
+  color: rgb(155, 155, 155);
 }
 
 //tela com tamanho maximo de  1280px
@@ -154,4 +156,8 @@ a:hover{
     font-size: 2.5rem;
   }
 
+}
+.mat-form-simples {
+  width: 60%;
+  align-self: center;
 }

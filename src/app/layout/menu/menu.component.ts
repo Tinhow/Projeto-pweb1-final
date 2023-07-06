@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-menu',
@@ -6,5 +8,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
+  botaoHome = 'FITRACKER';
+  botaoTable = 'Listar Usuários - Tabela';
+  botaoSign= 'Cadastrar Usuário';
 
+  constructor(
+    private rotaAtual: ActivatedRoute,
+    private roteador: Router,
+  ){
+    
+  }
+  goHome(): void {
+    if(this.botaoHome === 'FITRACKER'){
+      this.roteador.navigate(['/homePage']);
+    }}
+  goTable(): void{
+    if(this.botaoTable === 'Listar Usuários - Tabela'){
+      this.roteador.navigate(['/listagemUsers'])
+    }
+  }
+  goSign(): void{
+    if(this.botaoSign === 'Cadastrar Usuário'){
+      this.roteador.navigate(['/cadastro'])
+
+
+    }
+  }
 }

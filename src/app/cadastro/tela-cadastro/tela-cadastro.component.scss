@@ -4,7 +4,8 @@
 }
 
 .a{
-  background-color: white;
+  background-color: #3d3d3d;
+  color: #fff;
 }
 
 
@@ -15,11 +16,11 @@
 
 
 .b{
-  background-color: #969FFC;
+  background-color: #402760;
 }
 
 .b {
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
 }
 
@@ -51,6 +52,7 @@
 
 .tituloCadastro{
   display: flex;
+  color: #fff;
   justify-content: center;
   position: relative;
   bottom: 20px;
@@ -63,15 +65,16 @@
   flex-direction: column;
   padding: 1.5rem;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.mat-form-simples{
-  width: 100%;
-}
+// .mat-form-simples{
+//   width: 100%;
+// }
 
 .divLogo{
   display: flex;
+  color: #fff;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -86,6 +89,11 @@
   font-size: 2rem;
 }
 
+.mat-form-simples {
+  width: 60%;
+  align-self: center;
+
+}
 
 .link{
   position: relative;
@@ -96,11 +104,11 @@
 
 a{
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 a:hover{
-  color: white;
+  color: rgb(109, 109, 109);
 }
 
 //tela com tamanho maximo de  1280px
