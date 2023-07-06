@@ -2,10 +2,10 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
-import { UsuarioService } from 'src/app/shared/services/usuario.service';
-import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
-
-@Component({
+ import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
+import { MenuComponent } from 'src/app/layout/menu/menu.component';
+import { LayoutModule } from '@angular/cdk/layout';
+ @Component({
   selector: 'app-listagem-teste',
   templateUrl: './listagem-teste.component.html',
   styleUrls: ['./listagem-teste.component.scss']

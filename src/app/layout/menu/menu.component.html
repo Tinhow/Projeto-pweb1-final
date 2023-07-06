@@ -1,16 +1,16 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
   <div class="nomeLogo">
-    <p>FITRACKER</p>
+    <!-- <p>FITRACKER</p> -->
+    <button id="testeLogo"  (click)="goHome()" mat-button>FITRACKER</button>
   </div>
   <div class="menu" fxLayout="row" fxLayoutAlign="end center" >
     <button class="btmenu"  mat-raised-button >Sobre Nós</button>
     <button class="btmenu"  mat-raised-button >Contato</button>
-    <button class="btmenu"  mat-raised-button >Home</button>
-    <button class="btmenu" mat-raised-button [matMenuTriggerFor]="menu">Menu</button>
+     <button class="btmenu" mat-raised-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
-      <button [routerLink]="['cadastroUsuario']" mat-menu-item>Cadastrar usuário</button>
+      <button (click)="goSign()"  mat-menu-item>Cadastrar usuário</button>
       <button [routerLink]="['listagemUsers']" mat-menu-item>Listar Usuários</button>
-      <button [routerLink]="['homePage']" mat-menu-item>Listar Usuários - Tabela</button>
+      <button mat-menu-item>Listar Usuários - Tabela</button>
     </mat-menu>
   </div>  
 

@@ -1,32 +1,31 @@
 .container {
-  max-height: 100%;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 .a{
-  background-color: white;
+  background-color: #3d3d3d;
 }
 
 
 .a img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
 }
 
 
 .b{
-  background-color: #969FFC;
-}
-
-.b {
+  background-color: #402760;
+  color: #ffff;
   justify-content: center;
-  align-items: center;
 }
 
 .cadastro{
   display: flex;
-  justify-content: center;
+  align-self: center;
   height: 100%;
+  overflow: hidden;
 
 }
 
@@ -35,7 +34,7 @@
   justify-content: center;
   min-width: 100%;
   position: relative;
-  bottom: 2rem;
+  bottom: 3rem;
 }
 
 .bt button{
@@ -51,6 +50,7 @@
 
 .tituloCadastro{
   display: flex;
+  color: #fff;
   justify-content: center;
   position: relative;
   bottom: 20px;
@@ -63,15 +63,16 @@
   flex-direction: column;
   padding: 1.5rem;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.mat-form-simples{
-  width: 100%;
-}
+// .mat-form-simples{
+//   width: 100%;
+// }
 
 .divLogo{
   display: flex;
+  color: #fff;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -86,6 +87,11 @@
   font-size: 2rem;
 }
 
+.mat-form-simples {
+  width: 60%;
+  align-self: center;
+
+}
 
 .link{
   position: relative;
@@ -96,11 +102,11 @@
 
 a{
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 a:hover{
-  color: white;
+  color: rgb(109, 109, 109);
 }
 
 //tela com tamanho maximo de  1280px

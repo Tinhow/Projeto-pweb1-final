@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
 import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
+import { MsgbarService } from 'src/app/shared/services/msgbar.service';
 
 @Component({
   selector: 'app-tela-login',
@@ -19,10 +20,9 @@ export class TelaLoginComponent {
   hide = true;
 
   constructor(
-    private rotaAtual: ActivatedRoute,
     private roteador: Router,
-    private usuarioService: UsuarioFirestoreService
-  ) {}
+    private usuarioService: UsuarioFirestoreService,
+      ) {}
 
   logar(): void {
     this.usuarioService.logar(this.usuario).subscribe(
@@ -32,9 +32,7 @@ export class TelaLoginComponent {
         this.roteador.navigate(['homePage']);
       },
       error => {
-        // Ocorreu um erro ao autenticar o usuário
-        console.log(error);
-        alert('Usuário não encontrado');
+        console.log(error)
       }
     );
   }

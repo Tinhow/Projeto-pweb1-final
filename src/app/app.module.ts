@@ -7,10 +7,12 @@ import { LayoutModule } from './layout/layout.module';
 import { FirestoreModule } from './firestore/firestore.module';
 import { TelaHomeModule } from './tela-home/tela-home.module';
 import { CadastroModule } from './cadastro/cadastro.module';
+import { AboutusComponent } from './tela-about/aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutusComponent
   ],
   imports: [
     ComponentesAngularModule,
