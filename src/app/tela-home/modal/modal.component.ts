@@ -46,6 +46,7 @@ export class ModalComponent implements OnInit {
       this.atividadeService.cadastrar(this.atividade).subscribe({
         next: (atividade: Atividade) => {
           console.log(atividade);
+          this.cancel(); // Fecha o modal após adicionar a atividade com sucesso
         },
         error: (error: any) => {
           console.error(error);
