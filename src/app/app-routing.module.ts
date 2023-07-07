@@ -5,6 +5,7 @@ import { TelaCadastroComponent } from './cadastro/tela-cadastro/tela-cadastro.co
 import { HomeComponent } from './tela-home/home/home.component';
 import { ListagemUsersModule } from './listagem-users/listagem-users.module';
 import { ListagemTesteComponent } from './listagem-users/listagem-teste/listagem-teste.component';
+import { AboutusComponent } from './tela-about/aboutus/aboutus.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,9 @@ const routes: Routes = [
   {
     path:'editarTreino/:id',
     component: HomeComponent
+  }, {
+    path:'aboutUs',
+    component: AboutusComponent
   }
 
 ];
