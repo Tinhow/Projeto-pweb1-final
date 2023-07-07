@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalcontatoComponent } from './modalcontato/modalcontato.component';
 
 
 @Component({
@@ -11,9 +13,11 @@ export class MenuComponent {
   botaoHome = 'FITRACKER';
   botaoTable = 'Listar Usuários - Tabela';
   botaoSign= 'Cadastrar Usuário';
+  botaoAbout = 'Sobre Nós';
 
   constructor(
     private rotaAtual: ActivatedRoute,
+    public dialog: MatDialog,
     private roteador: Router,
   ){
     
@@ -22,12 +26,26 @@ export class MenuComponent {
     if(this.botaoHome === 'FITRACKER'){
       this.roteador.navigate(['/homePage']);
     }}
-
+  goTable(): void{
+    if(this.botaoTable === 'Listar Usuários - Tabela'){
+      this.roteador.navigate(['/listagemUsers'])
+    }
+  }
   goSign(): void{
     if(this.botaoSign === 'Cadastrar Usuário'){
       this.roteador.navigate(['/cadastro'])
 
 
     }
+  }
+  goAbout(): void{
+    if(this.botaoAbout === 'Sobre Nós'){
+      this.roteador.navigate(['/aboutUs'])
+
+
+    }
+  }
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalcontatoComponent);
   }
 }

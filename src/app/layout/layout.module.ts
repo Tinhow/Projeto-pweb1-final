@@ -4,12 +4,14 @@ import { MenuComponent } from './menu/menu.component';
 import { ComponentesAngularModule } from '../componentes-angular/componentes-angular.module';
 import { RodapeComponent } from './rodape/rodape.component';
 import { Router } from '@angular/router';
+import { ModalcontatoComponent } from './menu/modalcontato/modalcontato.component';
 
 
 @NgModule({
   declarations: [
     MenuComponent,
-    RodapeComponent
+    RodapeComponent,
+    ModalcontatoComponent
   ],
   imports: [
     CommonModule,
