@@ -99,7 +99,7 @@
 
 .link{
   display: flex;
-  margin-left: 10px;
+  margin: 10px auto;
   position: relative;
   bottom: 1.5rem;
 
@@ -135,6 +135,17 @@ a:hover{
   .container{
     height: 100vh;
   }
+}
+
+
+snack-bar-container.sucesso {
+  background: #4caf50 !important;
+  color: #fff;
+}
+
+snack-bar-container.erro {
+  background: #f44336 !important;
+  color: #fff;
 }
 
 //tela com tamanho maximo de  1360px

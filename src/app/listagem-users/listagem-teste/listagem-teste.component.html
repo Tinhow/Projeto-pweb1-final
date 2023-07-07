@@ -26,6 +26,12 @@
       <mat-cell *matCellDef="let item">{{item.nome}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.email }}</mat-cell>
+    </ng-container>
+
+
     <ng-container matColumnDef="cpf">
       <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
       <mat-cell *matCellDef="let item">{{item.cpf | cpf}}</mat-cell>

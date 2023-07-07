@@ -1,3 +1,4 @@
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +19,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, Pipe } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InterceptadorModule } from '../interceptador/interceptador.module';
+
 
 
 
@@ -41,7 +44,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     PipesModule,
     MatMenuModule,
-    MatOptionModule
+    MatOptionModule,
+    MatSnackBarModule,
+    InterceptadorModule
   ],
   exports: [
     CommonModule,
@@ -65,7 +70,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatOptionModule,
     MatSelectModule,
-    MatError
+    MatError,
+    MatSnackBarModule,
+    InterceptadorModule
 
   ]
 })

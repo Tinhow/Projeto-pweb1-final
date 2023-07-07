@@ -1,8 +1,9 @@
+import { ImensageService } from './../../shared/services/imensage.service';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
-import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
+//import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
 @Component({
@@ -20,14 +21,14 @@ export class TelaCadastroComponent {
   senha = new FormControl();
   cpf = new FormControl();
   idade = new FormControl();
-
   hide = true;
 
   constructor(
     private rotaAtual: ActivatedRoute,
     private roteador: Router,
     //private usuarioService: UsuarioFirestoreService
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private imensageService: ImensageService
   ) {
     this.usuario = new Usuario();
     const idParaEdicao = this.rotaAtual.snapshot.paramMap.get('id');
@@ -46,17 +47,17 @@ export class TelaCadastroComponent {
   }
 
   cadastrar(): void {
-    if(this.botaoSalvar === 'Salvar'){
+    if (this.botaoSalvar === 'Salvar') {
       this.usuarioService.cadastrar(this.usuario).subscribe();
       console.log(this.usuario);
+      this.imensageService.sucesso('Usuário editado com sucesso!')
       this.roteador.navigate(['/homePage']);
-    }
-    else{
+    } else {
       this.usuarioService.editar(this.usuario).subscribe(
-        (usuarioCadastrado: Usuario) => {
-          console.log(usuarioCadastrado);
+        (usuarioEditado: Usuario) => {
+          this.usuario = usuarioEditado;
+          this.imensageService.sucesso('Usuário cadastrado com sucesso!')
           this.roteador.navigate(['/homePage']);
-          this.usuario = new Usuario();
         },
         (error: any) => {
           console.error(error);

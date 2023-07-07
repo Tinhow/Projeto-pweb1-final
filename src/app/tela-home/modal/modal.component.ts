@@ -1,3 +1,4 @@
+import { ImensageService } from './../../shared/services/imensage.service';
 import { UsuarioService } from './../../shared/services/usuario.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Atividade } from 'src/app/shared/model/Atividade';
@@ -23,7 +24,11 @@ export class ModalComponent implements OnInit {
 
 
   //private atividadeService: AtividadeFirestoreService
-  constructor(private atividadeService: AtividadeService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
+  constructor(private atividadeService: AtividadeService,
+    public dialogRef: MatDialogRef<ModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private imensageService : ImensageService
+    ){
     this.atividade = new Atividade();
   }
 
@@ -72,16 +77,19 @@ export class ModalComponent implements OnInit {
     if (this.botaoAdd === 'Adicionar') {
       this.atividadeService.cadastrar(this.atividade).subscribe({
         next: (atividade: Atividade) => {
+          this.imensageService.sucesso('Atividade adicionada com sucesso');
           console.log(atividade);
           this.cancel(); // Fecha o modal após adicionar a atividade com sucesso
         },
         error: (error: any) => {
+          this.imensageService.erro('Erro: ' + error.message);
           console.error(error);
         }
       });
     } else {
       this.atividadeService.editar(this.atividade).subscribe({
         next: () => {
+          this.imensageService.sucesso('Atividade atualizada com sucesso');
           console.log("Atividade atualizada com sucesso");
           this.atividade = new Atividade();
           this.cancel();

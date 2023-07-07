@@ -6,6 +6,7 @@ import { Usuario } from 'src/app/shared/model/Usuario';
 import { MenuComponent } from 'src/app/layout/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
+import { ImensageService } from 'src/app/shared/services/imensage.service';
  @Component({
   selector: 'app-listagem-teste',
   templateUrl: './listagem-teste.component.html',
@@ -14,11 +15,13 @@ import { UsuarioService } from 'src/app/shared/services/usuario.service';
 export class ListagemTesteComponent implements OnInit {
 
   dataSource: MatTableDataSource<Usuario>;
-  mostrarColunas = ['nome', 'cpf', 'idade','acoes'];
+  mostrarColunas = ['nome', 'email', 'cpf', 'idade','acoes'];
 
 
   //usuarioService: UsuarioFirestoreService
-  constructor(private usuarioService: UsuarioService, private roteador: Router) {
+  constructor(private usuarioService: UsuarioService,
+    private roteador: Router,
+    private imensage: ImensageService ) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -46,13 +49,14 @@ export class ListagemTesteComponent implements OnInit {
   // }
 
   apagar(id: number): void {
-    console.log('apagando');
+    console.log('apagado');
      this.usuarioService.excluir(id).subscribe(
        apagado => {
          const indx = this.dataSource.data.findIndex(usuario => usuario.id === (id));
          if (indx > -1) {
            this.dataSource.data.splice(indx, 1);
            this.dataSource = new MatTableDataSource<Usuario>(this.dataSource.data);
+          this.imensage.sucesso('Usuário excluído com sucesso!')
          }
        }
     );

@@ -1,10 +1,11 @@
+import { ImensageService } from './../../shared/services/imensage.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
 import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
-import { MsgbarService } from 'src/app/shared/services/msgbar.service';
 
 @Component({
   selector: 'app-tela-login',
@@ -23,6 +24,7 @@ export class TelaLoginComponent {
     private roteador: Router,
     //private usuarioService: UsuarioFirestoreService,
     private usuarioService: UsuarioService,
+    private imensageService : ImensageService
       ) {}
 
   logar(): void {
@@ -30,9 +32,11 @@ export class TelaLoginComponent {
       usuarioLogado => {
         // O usuário foi autenticado com sucesso
         console.log(usuarioLogado);
+        this.imensageService.sucesso('Usuário logado com sucesso!')
         this.roteador.navigate(['homePage']);
       },
       error => {
+        this.imensageService.erro('Usuário ou senha inválidos!')
         console.log(error)
       }
     );

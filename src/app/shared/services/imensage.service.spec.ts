@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MsgbarService } from './msgbar.service';
+import { ImensageService } from './imensage.service';
 
-describe('MsgbarService', () => {
-  let service: MsgbarService;
+describe('ImensageService', () => {
+  let service: ImensageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MsgbarService);
+    service = TestBed.inject(ImensageService);
   });
 
   it('should be created', () => {

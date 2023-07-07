@@ -3,7 +3,7 @@ import { Atividade } from 'src/app/shared/model/Atividade';
 import { AtividadeService } from 'src/app/shared/services/atividade.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
-import { AtividadeFirestoreService } from 'src/app/shared/services/atividade-firestore.service';
+import { ImensageService } from 'src/app/shared/services/imensage.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,8 @@ export class HomeComponent {
   constructor(
     public dialog: MatDialog,
     //private atividadeService: AtividadeFirestoreService
-    private atividadeService: AtividadeService
+    private atividadeService: AtividadeService,
+    private imensageService : ImensageService
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +32,6 @@ export class HomeComponent {
         atividade: atividade
       }
     });
-
     dialogRef.afterClosed().subscribe(() => {
       this.listar();
     });
@@ -66,9 +66,11 @@ export class HomeComponent {
   excluir(atividade: Atividade): void {
     this.atividadeService.excluir(atividade).subscribe({
       next: () => {
+        this.imensageService.sucesso('Atividade excluída com sucesso!');
         this.listar();
       },
       error: (error: any) => {
+        this.imensageService.erro('Erro ao excluir atividade');
         console.error(error);
       }
     });

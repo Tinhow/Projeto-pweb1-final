@@ -109,6 +109,17 @@ a:hover{
   color: rgb(109, 109, 109);
 }
 
+snack-bar-container.sucesso {
+  background: #4caf50 !important;
+  color: #fff;
+}
+
+snack-bar-container.erro {
+  background: #f44336 !important;
+  color: #fff;
+}
+
+
 //tela com tamanho maximo de  1280px
 @media (max-width: 1300px) {
   .imgUser {

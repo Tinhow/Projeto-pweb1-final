@@ -14,8 +14,9 @@ import { of , defer } from 'rxjs';
 export class UsuarioService {
 
   URL_USUARIOS = 'http://localhost:8080/usuarios';
-
   //URL_USUARIOS = 'http://localhost:3000/usuarios';
+
+  botaoSalvar = 'Salvar'
 
   constructor(private httpClient: HttpClient) {
   }
@@ -46,6 +47,8 @@ export class UsuarioService {
       })
     );
   }
+
+
 
 
   excluir(id: number): Observable<Usuario> {

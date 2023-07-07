@@ -16,17 +16,14 @@ import { LayoutModule } from '../layout/layout.module';
 
   ],
   imports: [
-    CommonModule,
     ComponentesAngularModule,
     PipesModule,
-    MatDialogModule,
-    FormsModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
     LayoutModule
   ],
   exports: [
-    HomeComponent
+    HomeComponent,
+
   ]
 })
 export class TelaHomeModule { }
