@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/Usuario';
 import { UsuarioFirestoreService } from 'src/app/shared/services/usuario-firestore.service';
+import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
 @Component({
   selector: 'app-tela-cadastro',
@@ -25,7 +26,8 @@ export class TelaCadastroComponent {
   constructor(
     private rotaAtual: ActivatedRoute,
     private roteador: Router,
-    private usuarioService: UsuarioFirestoreService
+    //private usuarioService: UsuarioFirestoreService
+    private usuarioService: UsuarioService
   ) {
     this.usuario = new Usuario();
     const idParaEdicao = this.rotaAtual.snapshot.paramMap.get('id');
@@ -33,7 +35,7 @@ export class TelaCadastroComponent {
 
       this.estahCadastrando = false;
       this.botaoSalvar = 'Salvar';
-      this.usuarioService.pesquisarPorId(String(idParaEdicao)).subscribe(
+      this.usuarioService.bucarId(Number(idParaEdicao)).subscribe(
         usuario => {
           if (usuario) {
             this.usuario = usuario;
@@ -45,12 +47,12 @@ export class TelaCadastroComponent {
 
   cadastrar(): void {
     if(this.botaoSalvar === 'Salvar'){
-      this.usuarioService.atualizar(this.usuario).subscribe();
+      this.usuarioService.cadastrar(this.usuario).subscribe();
       console.log(this.usuario);
       this.roteador.navigate(['/homePage']);
     }
     else{
-      this.usuarioService.inserir(this.usuario).subscribe(
+      this.usuarioService.editar(this.usuario).subscribe(
         (usuarioCadastrado: Usuario) => {
           console.log(usuarioCadastrado);
           this.roteador.navigate(['/homePage']);

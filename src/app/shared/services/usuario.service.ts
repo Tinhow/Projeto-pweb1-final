@@ -13,7 +13,9 @@ import { of , defer } from 'rxjs';
 })
 export class UsuarioService {
 
-  URL_USUARIOS = 'http://localhost:3000/usuarios';
+  URL_USUARIOS = 'http://localhost:8080/usuarios';
+
+  //URL_USUARIOS = 'http://localhost:3000/usuarios';
 
   constructor(private httpClient: HttpClient) {
   }

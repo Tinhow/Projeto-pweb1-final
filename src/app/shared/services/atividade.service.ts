@@ -14,11 +14,13 @@ import { of , defer } from 'rxjs';
 })
 export class AtividadeService {
 
-  URL_ATIVIDADES = 'http://localhost:3000/atividades';
+  URL_ATIVIDADES = 'http://localhost:8080/atividades';
+
+  //URL_ATIVIDADES = 'http://localhost:3000/atividades';
 
   constructor(private httpClient: HttpClient) {
   }
-  
+
   listar(): Observable<Atividade[]>{
     return this.httpClient.get<Atividade[]>(this.URL_ATIVIDADES);
   }

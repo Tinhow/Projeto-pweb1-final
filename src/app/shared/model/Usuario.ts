@@ -1,18 +1,18 @@
-export class Usuario{
+export class Usuario {
+  id?: number;
+  nome?: string;
+  cpf?: string;
+  idade?: number;
+  email?: string;
+  senha?: string;
 
-  id?: string;
-  nome = '';
-  cpf = '';
-  idade: string;
-  senha: string;
-  email: string;
-
-  constructor(id?: string, usuario: Usuario = {nome: '', cpf: '', idade: '', senha: '', email: ''}) {
-  this.id = id;
-  this.cpf = usuario.cpf;
-  this.nome = usuario.nome;
-  this.idade = usuario.idade;
-  this.senha = usuario.senha;
-  this.email = usuario.email;
+  constructor(id?: number, usuario: Usuario = {}) {
+    this.id = id;
+    this.cpf = usuario.cpf;
+    this.nome = usuario.nome;
+    this.idade = usuario.idade;
+    this.email = usuario.email;
+    this.senha = usuario.senha;
   }
+
 }

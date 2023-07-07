@@ -21,7 +21,8 @@ export class TelaLoginComponent {
 
   constructor(
     private roteador: Router,
-    private usuarioService: UsuarioFirestoreService,
+    //private usuarioService: UsuarioFirestoreService,
+    private usuarioService: UsuarioService,
       ) {}
 
   logar(): void {

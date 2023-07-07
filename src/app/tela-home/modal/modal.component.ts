@@ -21,7 +21,9 @@ export class ModalComponent implements OnInit {
   duracaoAtividade: Array<string> = ['1 Hora', '2 Horas', '3 Horas', '4 Horas', '5 Horas',];
   botaoAdicionar: string = 'Adicionar';
 
-  constructor(private atividadeService: AtividadeFirestoreService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
+
+  //private atividadeService: AtividadeFirestoreService
+  constructor(private atividadeService: AtividadeService,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
     this.atividade = new Atividade();
   }
 
@@ -41,6 +43,31 @@ export class ModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  // cadastrar(): void {
+  //   if (this.botaoAdd === 'Adicionar') {
+  //     this.atividadeService.cadastrar(this.atividade).subscribe({
+  //       next: (atividade: Atividade) => {
+  //         console.log(atividade);
+  //         this.cancel(); // Fecha o modal após adicionar a atividade com sucesso
+  //       },
+  //       error: (error: any) => {
+  //         console.error(error);
+  //       }
+  //     });
+  //   } else {
+  //     this.atividadeService.(this.atividade).subscribe({
+  //       next: () => {
+  //         console.log("Atividade atualizada com sucesso");
+  //         this.atividade = new Atividade();
+  //         this.cancel();
+  //       },
+  //       error: (error: any) => {
+  //         console.error(error);
+  //       }
+  //     });
+  //   }
+  // }
+
   cadastrar(): void {
     if (this.botaoAdd === 'Adicionar') {
       this.atividadeService.cadastrar(this.atividade).subscribe({
@@ -58,13 +85,12 @@ export class ModalComponent implements OnInit {
           console.log("Atividade atualizada com sucesso");
           this.atividade = new Atividade();
           this.cancel();
-        },
-        error: (error: any) => {
-          console.error(error);
         }
       });
     }
   }
+
+
 
 }
 

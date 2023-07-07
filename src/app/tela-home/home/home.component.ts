@@ -16,7 +16,8 @@ export class HomeComponent {
 
   constructor(
     public dialog: MatDialog,
-    private atividadeService: AtividadeFirestoreService
+    //private atividadeService: AtividadeFirestoreService
+    private atividadeService: AtividadeService
   ) {}
 
   ngOnInit(): void {
@@ -48,11 +49,22 @@ export class HomeComponent {
     });
   }
 
+  // metodo do firestore
+  // excluir(atividade: Atividade): void {
+  //   const atividadeId: string = atividade.id || ''; // Verifica se atividade.id está definido, caso contrário, atribui uma string vazia
+
+  //   this.atividadeService.apagar(atividadeId).subscribe({
+  //     next: () => {
+  //       this.listar();
+  //     },
+  //     error: (error: any) => {
+  //       console.error(error);
+  //     }
+  //   });
+  // }
 
   excluir(atividade: Atividade): void {
-    const atividadeId: string = atividade.id || ''; // Verifica se atividade.id está definido, caso contrário, atribui uma string vazia
-
-    this.atividadeService.apagar(atividadeId).subscribe({
+    this.atividadeService.excluir(atividade).subscribe({
       next: () => {
         this.listar();
       },
@@ -61,6 +73,7 @@ export class HomeComponent {
       }
     });
   }
+
 
 
   editar(atividade: Atividade): void {
